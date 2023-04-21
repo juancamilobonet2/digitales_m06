@@ -18,12 +18,13 @@
 //=======================================================
 //  MODULE Definition
 //=======================================================
-module CC_SIDECOMPARATOR_JUG2 #(parameter SIDECOMPARATOR_DATAWIDTH=8)(
-//////////// OUTPUTS //////////
-	CC_SIDECOMPARATOR_JUG2_derecha_OutLow,
-	CC_SIDECOMPARATOR_JUG2_izquierda_OutLow,
-//////////// INPUTS //////////
-	CC_SIDECOMPARATOR_JUG2_data_InBUS
+module SC_POINTCOUNTER #(parameter POINTCOUNTER_DATAWIDTH=8)(
+	//////////// OUTPUTS //////////
+	SC_POINTCOUNTER_data_OutBUS,
+	//////////// INPUTS //////////
+	SC_POINTCOUNTER_CLOCK_50,
+	SC_POINTCOUNTER_RESET_InHigh,
+	SC_POINTCOUNTER_upcount_InLow
 );
 //=======================================================
 //  PARAMETER declarations
@@ -32,26 +33,40 @@ module CC_SIDECOMPARATOR_JUG2 #(parameter SIDECOMPARATOR_DATAWIDTH=8)(
 //=======================================================
 //  PORT declarations
 //=======================================================
-output	reg CC_SIDECOMPARATOR_JUG2_derecha_OutLow;
-output	reg CC_SIDECOMPARATOR_JUG2_izquierda_OutLow;
-input 	[SIDECOMPARATOR_JUG_DATAWIDTH-1:0] CC_SIDECOMPARATOR_JUG2_data_InBUS;
+output		[POINTCOUNTER_DATAWIDTH-1:0]	SC_POINTCOUNTER_data_OutBUS;
+input		SC_POINTCOUNTER_CLOCK_50;
+input		SC_POINTCOUNTER_RESET_InHigh;
+input		SC_POINTCOUNTER_upcount_InLow;
+
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
+reg [upPOINTCOUNTER_DATAWIDTH-1:0] POINTCOUNTER_Register;
+reg [upPOINTCOUNTER_DATAWIDTH-1:0] POINTCOUNTER_Signal;
 //=======================================================
 //  Structural coding
 //=======================================================
-always @(CC_SIDECOMPARATOR_JUG2_data_InBUS)
+//INPUT LOGIC: COMBINATIONAL
+always @(*)
 begin
-	if( CC_SIDECOMPARATOR_JUG2_data_InBUS == 8'b00001000)
-		CC_SIDECOMPARATOR_JUG2_izquierda_OutLow = 1'b0;
-	else 
-		CC_SIDECOMPARATOR_JUG2_izquierda_OutLow = 1'b1;
+	if (SC_POINTCOUNTER_upcount_InLow == 1'b0)
+		POINTCOUNTER_Signal = POINTCOUNTER_Register + 1'b1;
+	else
+		POINTCOUNTER_Signal = POINTCOUNTER_Register;
+	end	
+//STATE REGISTER: SEQUENTIAL
+always @(posedge SC_POINTCOUNTER_CLOCK_50, posedge SC_POINTCOUNTER_RESET_InHigh)
+begin
+	if (SC_POINTCOUNTER_RESET_InHigh  == 1'b1)
+		POINTCOUNTER_Register <= 0;
+	else
+		POINTCOUNTER_Register <= POINTCOUNTER_Signal;
 
-	if( CC_SIDECOMPARATOR_JUG2_data_InBUS == 8'b00000001)
-		CC_SIDECOMPARATOR_JUG2_derecha_OutLow = 1'b0;
-	else 
-		CC_SIDECOMPARATOR_JUG2_derecha_OutLow = 1'b1;
+end
+//=======================================================
+//  Outputs
+//=======================================================
+//OUTPUT LOGIC: COMBINATIONAL
+assign SC_POINTCOUNTER_data_OutBUS = POINTCOUNTER_Register;
 
-	
 endmodule

@@ -18,12 +18,13 @@
 //=======================================================
 //  MODULE Definition
 //=======================================================
-module CC_SIDECOMPARATOR_JUG2 #(parameter SIDECOMPARATOR_DATAWIDTH=8)(
-//////////// OUTPUTS //////////
-	CC_SIDECOMPARATOR_JUG2_derecha_OutLow,
-	CC_SIDECOMPARATOR_JUG2_izquierda_OutLow,
-//////////// INPUTS //////////
-	CC_SIDECOMPARATOR_JUG2_data_InBUS
+module SC_SPEEDCOUNTER #(parameter SPEEDCOUNTER_DATAWIDTH=8)(
+	//////////// OUTPUTS //////////
+	SC_SPEEDCOUNTER_data_OutBUS,
+	//////////// INPUTS //////////
+	SC_SPEEDCOUNTER_CLOCK_50,
+	SC_SPEEDCOUNTER_RESET_InHigh,
+	SC_SPEEDCOUNTER_upcount_InLow
 );
 //=======================================================
 //  PARAMETER declarations
@@ -32,26 +33,40 @@ module CC_SIDECOMPARATOR_JUG2 #(parameter SIDECOMPARATOR_DATAWIDTH=8)(
 //=======================================================
 //  PORT declarations
 //=======================================================
-output	reg CC_SIDECOMPARATOR_JUG2_derecha_OutLow;
-output	reg CC_SIDECOMPARATOR_JUG2_izquierda_OutLow;
-input 	[SIDECOMPARATOR_JUG_DATAWIDTH-1:0] CC_SIDECOMPARATOR_JUG2_data_InBUS;
+output		[SPEEDCOUNTER_DATAWIDTH-1:0]	SC_SPEEDCOUNTER_data_OutBUS;
+input		SC_SPEEDCOUNTER_CLOCK_50;
+input		SC_SPEEDCOUNTER_RESET_InHigh;
+input		SC_SPEEDCOUNTER_upcount_InLow;
+
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
+reg [upSPEEDCOUNTER_DATAWIDTH-1:0] SPEEDCOUNTER_Register;
+reg [upSPEEDCOUNTER_DATAWIDTH-1:0] SPEEDCOUNTER_Signal;
 //=======================================================
 //  Structural coding
 //=======================================================
-always @(CC_SIDECOMPARATOR_JUG2_data_InBUS)
+//INPUT LOGIC: COMBINATIONAL
+always @(*)
 begin
-	if( CC_SIDECOMPARATOR_JUG2_data_InBUS == 8'b00001000)
-		CC_SIDECOMPARATOR_JUG2_izquierda_OutLow = 1'b0;
-	else 
-		CC_SIDECOMPARATOR_JUG2_izquierda_OutLow = 1'b1;
+	if (SC_SPEEDCOUNTER_upcount_InLow == 1'b0)
+		SPEEDCOUNTER_Signal = SPEEDCOUNTER_Register + 1'b1;
+	else
+		SPEEDCOUNTER_Signal = SPEEDCOUNTER_Register;
+	end	
+//STATE REGISTER: SEQUENTIAL
+always @(posedge SC_SPEEDCOUNTER_CLOCK_50, posedge SC_SPEEDCOUNTER_RESET_InHigh)
+begin
+	if (SC_SPEEDCOUNTER_RESET_InHigh  == 1'b1)
+		SPEEDCOUNTER_Register <= 0;
+	else
+		SPEEDCOUNTER_Register <= SPEEDCOUNTER_Signal;
 
-	if( CC_SIDECOMPARATOR_JUG2_data_InBUS == 8'b00000001)
-		CC_SIDECOMPARATOR_JUG2_derecha_OutLow = 1'b0;
-	else 
-		CC_SIDECOMPARATOR_JUG2_derecha_OutLow = 1'b1;
+end
+//=======================================================
+//  Outputs
+//=======================================================
+//OUTPUT LOGIC: COMBINATIONAL
+assign SC_SPEEDCOUNTER_data_OutBUS = SPEEDCOUNTER_Register;
 
-	
 endmodule

@@ -56,7 +56,9 @@ input 			SC_STATEMACHINE_JUG1_RESET_InHigh;
 input			SC_STATEMACHINE_JUG1_startButton_InLow;
 input			SC_STATEMACHINE_JUG1_leftButton_InLow;
 input			SC_STATEMACHINE_JUG1_rightButton_InLow;
-input			SC_STATEMACHINE_JUG1_sidecomparator_InLow;
+input			SC_STATEMACHINE_JUG1_izquierdacomparator_InLow;
+input			SC_STATEMACHINE_JUG1_derechacomparator_InLow;
+
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
@@ -73,8 +75,8 @@ begin
 		STATE_RESET_0: STATE_Signal = STATE_START_0;
 		STATE_START_0: STATE_Signal = STATE_CHECK_0;
 		STATE_CHECK_0: if (SC_STATEMACHINE_JUG1_startButton_InLow == 1'b0) STATE_Signal = STATE_INIT_0;
-						else if (SC_STATEMACHINE_JUG1_leftButton_InLow == 1'b0 & (SC_STATEMACHINE_JUG1_sidecomparator_InLow == 1'b1)) STATE_Signal = STATE_LEFT_0;
-						else if (SC_STATEMACHINE_JUG1_rightButton_InLow == 1'b0 & (SC_STATEMACHINE_JUG1_sidecomparator_InLow == 1'b1)) STATE_Signal = STATE_RIGHT_0;
+						else if (SC_STATEMACHINE_JUG1_leftButton_InLow == 1'b0 & (SC_STATEMACHINE_JUG1_izquierdacomparator_InLow == 1'b1)) STATE_Signal = STATE_LEFT_0;
+						else if (SC_STATEMACHINE_JUG1_rightButton_InLow == 1'b0 & (SC_STATEMACHINE_JUG1_derechacomparator_InLow == 1'b1)) STATE_Signal = STATE_RIGHT_0;
 						else STATE_Signal = STATE_CHECK_0;
 		STATE_INIT_0: 	STATE_Signal = STATE_CHECK_1;
 		STATE_LEFT_0:  	STATE_Signal = STATE_CHECK_1;

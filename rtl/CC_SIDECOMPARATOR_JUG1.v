@@ -18,11 +18,12 @@
 //=======================================================
 //  MODULE Definition
 //=======================================================
-module CC_SIDECOMPARATOR #(parameter SIDECOMPARATOR_DATAWIDTH=8)(
+module CC_SIDECOMPARATOR_JUG1 #(parameter SIDECOMPARATOR_DATAWIDTH=8)(
 //////////// OUTPUTS //////////
-	CC_SIDECOMPARATOR_side_OutLow,
+	CC_SIDECOMPARATOR_JUG1_derecha_OutLow,
+	CC_SIDECOMPARATOR_JUG1_izquierda_OutLow,
 //////////// INPUTS //////////
-	CC_SIDECOMPARATOR_data_InBUS
+	CC_SIDECOMPARATOR_JUG1_data_InBUS
 );
 //=======================================================
 //  PARAMETER declarations
@@ -31,20 +32,28 @@ module CC_SIDECOMPARATOR #(parameter SIDECOMPARATOR_DATAWIDTH=8)(
 //=======================================================
 //  PORT declarations
 //=======================================================
-output	reg CC_SIDECOMPARATOR_side_OutLow;
-input 	[SIDECOMPARATOR_DATAWIDTH-1:0] CC_SIDECOMPARATOR_data_InBUS;
+output	reg CC_SIDECOMPARATOR_JUG1_derecha_OutLow;
+output	reg CC_SIDECOMPARATOR_JUG1_izquierda_OutLow;
+input 	[SIDECOMPARATOR_JUG_DATAWIDTH-1:0] CC_SIDECOMPARATOR_JUG1_data_InBUS;
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
 //=======================================================
 //  Structural coding
 //=======================================================
-always @(CC_SIDECOMPARATOR_data_InBUS)
+always @(CC_SIDECOMPARATOR_JUG1_data_InBUS)
 begin
-	if( CC_SIDECOMPARATOR_data_InBUS == 8'b00000000) 
-		CC_SIDECOMPARATOR_side_OutLow = 1'b1;
+	if( CC_SIDECOMPARATOR_JUG1_data_InBUS == 8'b10000000)
+		CC_SIDECOMPARATOR_JUG1_izquierda_OutLow = 1'b0;
 	else 
-		CC_SIDECOMPARATOR_side_OutLow = 1'b0;
+		CC_SIDECOMPARATOR_JUG1_izquierda_OutLow = 1'b1;
+
+	if( CC_SIDECOMPARATOR_JUG1_data_InBUS == 8'b00010000)
+		CC_SIDECOMPARATOR_JUG1_derecha_OutLow = 1'b0;
+	else 
+		CC_SIDECOMPARATOR_JUG1_derecha_OutLow = 1'b1;
+
+	
 end
 
 endmodule
