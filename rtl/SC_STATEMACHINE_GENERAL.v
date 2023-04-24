@@ -202,7 +202,7 @@ begin
 //=========================================================
 	STATE_RESET_0 :	
 		begin
-			SC_STATEMACHINE_GENERAL_clear_OutLow =  
+			SC_STATEMACHINE_GENERAL_clear_OutLow =  1'b1;
 		end
 //=========================================================
 // STATE_START
