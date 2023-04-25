@@ -21,8 +21,6 @@
 module SC_STATEMACHINE_JUG1 (
 	//////////// OUTPUTS //////////
 	SC_STATEMACHINE_JUG1_clear_OutLow,
-	SC_STATEMACHINE_JUG1_load0_OutLow,
-	SC_STATEMACHINE_JUG1_load1_OutLow,
 	SC_STATEMACHINE_JUG1_shiftselection_Out,
 	//////////// INPUTS //////////
 	SC_STATEMACHINE_JUG1_CLOCK_50,
@@ -48,8 +46,6 @@ localparam STATE_CHECK_1									= 6;
 //  PORT declarations
 //=======================================================
 output reg		SC_STATEMACHINE_JUG1_clear_OutLow;
-output reg		SC_STATEMACHINE_JUG1_load0_OutLow;
-output reg		SC_STATEMACHINE_JUG1_load1_OutLow;
 output reg		[1:0] SC_STATEMACHINE_JUG1_shiftselection_Out;
 input			SC_STATEMACHINE_JUG1_CLOCK_50;
 input 			SC_STATEMACHINE_JUG1_RESET_InHigh;
@@ -113,8 +109,6 @@ begin
 	STATE_RESET_0 :	
 		begin
 			SC_STATEMACHINE_JUG1_clear_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load1_OutLow = 1'b1;
 			SC_STATEMACHINE_JUG1_shiftselection_Out  = 2'b11; 
 		end
 //=========================================================
@@ -123,8 +117,6 @@ begin
 	STATE_START_0 :	
 		begin
 			SC_STATEMACHINE_JUG1_clear_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load1_OutLow = 1'b1;
 			SC_STATEMACHINE_JUG1_shiftselection_Out  = 2'b11; 
 		end
 //=========================================================
@@ -133,8 +125,6 @@ begin
 	STATE_CHECK_0 :
 		begin
 			SC_STATEMACHINE_JUG1_clear_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load1_OutLow = 1'b1;
 			SC_STATEMACHINE_JUG1_shiftselection_Out  = 2'b11; 
 		end
 //=========================================================
@@ -143,8 +133,6 @@ begin
 	STATE_CHECK_1 :
 		begin
 			SC_STATEMACHINE_JUG1_clear_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load1_OutLow = 1'b1;
 			SC_STATEMACHINE_JUG1_shiftselection_Out  = 2'b11; 
 		end
 //=========================================================
@@ -153,8 +141,6 @@ begin
 	STATE_INIT_0 :	
 		begin
 			SC_STATEMACHINE_JUG1_clear_OutLow = 1'b0;
-			SC_STATEMACHINE_JUG1_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load1_OutLow = 1'b1;
 			SC_STATEMACHINE_JUG1_shiftselection_Out  = 2'b11; 
 		end
 
@@ -164,8 +150,6 @@ begin
 	STATE_LEFT_0 :	
 		begin
 			SC_STATEMACHINE_JUG1_clear_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load1_OutLow = 1'b1;
 			SC_STATEMACHINE_JUG1_shiftselection_Out  = 2'b01; 
 		end
 //=========================================================
@@ -174,8 +158,6 @@ begin
 	STATE_RIGHT_0 :	
 		begin
 			SC_STATEMACHINE_JUG1_clear_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load1_OutLow = 1'b1;
 			SC_STATEMACHINE_JUG1_shiftselection_Out  = 2'b10; 
 		end
 
@@ -185,8 +167,6 @@ begin
 	default :
 		begin
 			SC_STATEMACHINE_JUG1_clear_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_JUG1_load1_OutLow = 1'b1;
 			SC_STATEMACHINE_JUG1_shiftselection_Out  = 2'b11; 
 		end
 	endcase

@@ -27,3 +27,4 @@ always @(*)
 begin
    SC_OR_C_z_Out = OR_C_data0_In | OR_C_data1_In;
 end
+endmodule
