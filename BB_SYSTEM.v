@@ -51,6 +51,71 @@ module BB_SYSTEM (
  parameter DATA_FIXED_INITREGPOINT_1 = 8'b00000000;
  parameter DATA_FIXED_INITREGPOINT_0 = 8'b00010000;
  
+ // Pantalla Start
+ parameter DATA_FIXED_INITReg_JUG_7 = 8'b00000000;
+ parameter DATA_FIXED_INITReg_JUG_6 = 8'b01100110;
+ parameter DATA_FIXED_INITReg_JUG_5 = 8'b01000100;
+ parameter DATA_FIXED_INITReg_JUG_4 = 8'b01000100;
+ parameter DATA_FIXED_INITReg_JUG_3 = 8'b00100010;
+ parameter DATA_FIXED_INITReg_JUG_2 = 8'b00100010;
+ parameter DATA_FIXED_INITReg_JUG_1 = 8'b01100110;
+ parameter DATA_FIXED_INITReg_JUG_0 = 8'b00000000;
+// Pantalla Go
+ parameter DATA_FIXED_GO_Reg_JUG_7 = 8'b00000000;
+ parameter DATA_FIXED_GO_Reg_JUG_6 = 8'b01100110;
+ parameter DATA_FIXED_GO_Reg_JUG_5 = 8'b10001001;
+ parameter DATA_FIXED_GO_Reg_JUG_4 = 8'b10001001;
+ parameter DATA_FIXED_GO_Reg_JUG_3 = 8'b10111001;
+ parameter DATA_FIXED_GO_Reg_JUG_2 = 8'b10011001;
+ parameter DATA_FIXED_GO_Reg_JUG_1 = 8'b01100110;
+ parameter DATA_FIXED_GO_Reg_JUG_0 = 8'b00000000;
+// Pantalla Nivel 1
+ parameter DATA_FIXED_L1_Reg_JUG_7 = 8'b00000000;
+ parameter DATA_FIXED_L1_Reg_JUG_6 = 8'b00001000;
+ parameter DATA_FIXED_L1_Reg_JUG_5 = 8'b00011000;
+ parameter DATA_FIXED_L1_Reg_JUG_4 = 8'b00001000;
+ parameter DATA_FIXED_L1_Reg_JUG_3 = 8'b00001000;
+ parameter DATA_FIXED_L1_Reg_JUG_2 = 8'b00001000;
+ parameter DATA_FIXED_L1_Reg_JUG_1 = 8'b00011100;
+ parameter DATA_FIXED_L1_Reg_JUG_0 = 8'b00000000;
+// Pantalla Nivel 2
+ parameter DATA_FIXED_L2_Reg_JUG_7 = 8'b00000000;
+ parameter DATA_FIXED_L2_Reg_JUG_6 = 8'b00011000;
+ parameter DATA_FIXED_L2_Reg_JUG_5 = 8'b00100100;
+ parameter DATA_FIXED_L2_Reg_JUG_4 = 8'b00000100;
+ parameter DATA_FIXED_L2_Reg_JUG_3 = 8'b00001000;
+ parameter DATA_FIXED_L2_Reg_JUG_2 = 8'b00010000;
+ parameter DATA_FIXED_L2_Reg_JUG_1 = 8'b00111100;
+ parameter DATA_FIXED_L2_Reg_JUG_0 = 8'b00000000;
+// Pantalla Nivel 3
+ parameter DATA_FIXED_L3_Reg_JUG_7 = 8'b00000000;
+ parameter DATA_FIXED_L3_Reg_JUG_6 = 8'b00011000;
+ parameter DATA_FIXED_L3_Reg_JUG_5 = 8'b00100100;
+ parameter DATA_FIXED_L3_Reg_JUG_4 = 8'b00000100;
+ parameter DATA_FIXED_L3_Reg_JUG_3 = 8'b00001000;
+ parameter DATA_FIXED_L3_Reg_JUG_2 = 8'b00000100;
+ parameter DATA_FIXED_L3_Reg_JUG_1 = 8'b00100100;
+ parameter DATA_FIXED_L3_Reg_JUG_0 = 8'b00011000;
+// Pantalla Vivo/Muerto
+ parameter DATA_FIXED_VM_Reg_JUG_7 = 8'b00001111
+ parameter DATA_FIXED_VM_Reg_JUG_6 = 8'b01101111
+ parameter DATA_FIXED_VM_Reg_JUG_5 = 8'b00001111
+ parameter DATA_FIXED_VM_Reg_JUG_4 = 8'b10011111
+ parameter DATA_FIXED_VM_Reg_JUG_3 = 8'b01101111
+ parameter DATA_FIXED_VM_Reg_JUG_2 = 8'b00001111
+ parameter DATA_FIXED_VM_Reg_JUG_1 = 8'b00001111
+ parameter DATA_FIXED_VM_Reg_JUG_0 = 8'b00001111
+// Pantalla Muerto/Vivo
+ parameter DATA_FIXED_MV_Reg_JUG_7 = 8'b11110000
+ parameter DATA_FIXED_MV_Reg_JUG_6 = 8'b11110110
+ parameter DATA_FIXED_MV_Reg_JUG_5 = 8'b11110000
+ parameter DATA_FIXED_MV_Reg_JUG_4 = 8'b11111001
+ parameter DATA_FIXED_MV_Reg_JUG_3 = 8'b11110110
+ parameter DATA_FIXED_MV_Reg_JUG_2 = 8'b11110000
+ parameter DATA_FIXED_MV_Reg_JUG_1 = 8'b11110000
+ parameter DATA_FIXED_MV_Reg_JUG_0 = 8'b11110000
+
+
  //=======================================================
 //  PORT declarations
 //=======================================================
@@ -120,7 +185,26 @@ SC_DEBOUNCE1 SC_DEBOUNCE1_u2 (
 //######################################################################
 //#	!!! ACA VAN TUS COMPONENTES
 //######################################################################
-
+// Registros de jugador
+SC_REGJUG SC_REGJUG_u0 (
+// conexiones de entrada al registro del jugador 1
+	.SC_REGJUG_clock(BB_SYSTEM_CLOCK_50),
+	.SC_REGJUG_reset(BB_SYSTEM_RESET_InHigh),
+	.SC_RegJUG_clear_InLow(SC_STATEMACHINE_JUG1_clear0_cwire),
+	.SC_REGJUG_load_InLow(SC_STATEMACHINE_JUG1_load0_cwire)
+	.SC_REGJUG_shiftselection_In(SC_STATEMACHINE_JUG1_shiftselection0_cwire),
+	//No se de donde vendría el bus de datos de entrada (dataIn)
+	.SC_REGJUG_dataIn(DATA_FIXED_VM_Reg_JUG_0),
+);
+SC_REGJUG SC_REGJUG_u1 (
+	.SC_REGJUG_clock(BB_SYSTEM_CLOCK_50),
+	.SC_REGJUG_reset(BB_SYSTEM_RESET_InHigh),
+	.SC_RegJUG_clear_InLow(SC_STATEMACHINE_JUG1_clear0_cwire),
+	.SC_REGJUG_load_InLow(SC_STATEMACHINE_JUG1_load0_cwire)
+	.SC_REGJUG_shiftselection_In(SC_STATEMACHINE_JUG1_shiftselection0_cwire),
+	//No se de donde vendría el bus de datos de entrada (dataIn)
+	.SC_REGJUG_dataIn(DATA_FIXED_VM_Reg_JUG_0),
+);
 
 
 
