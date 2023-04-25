@@ -18,11 +18,13 @@
 //=======================================================
 //  MODULE Definition
 //=======================================================
-module CC_SPEEDCOMPARATOR #(parameter SPEEDCOMPARATOR_DATAWIDTH=23)(
+module CC_SPEEDCOMPARATOR #(parameter SPEEDCOMPARATOR_DATAWIDTH=8)(
 //////////// OUTPUTS //////////
-	CC_SPEEDCOMPARATOR_T0_OutLow,
+	CC_SPEEDCOMPARATOR_signal_OutLow,
 //////////// INPUTS //////////
-	CC_SPEEDCOMPARATOR_data_InBUS
+	CC_SPEEDCOMPARATOR_data_InBUS,
+	CC_SPEEDCOMPARATOR_limit_InBUS,
+	CC_SPEEDCOMPARATOR_loadSignal_InLow
 );
 //=======================================================
 //  PARAMETER declarations
@@ -31,20 +33,28 @@ module CC_SPEEDCOMPARATOR #(parameter SPEEDCOMPARATOR_DATAWIDTH=23)(
 //=======================================================
 //  PORT declarations
 //=======================================================
-output	reg CC_SPEEDCOMPARATOR_T0_OutLow;
+output	CC_SPEEDCOMPARATOR_signal_OutLow;
 input 	[SPEEDCOMPARATOR_DATAWIDTH-1:0] CC_SPEEDCOMPARATOR_data_InBUS;
+input 	[SPEEDCOMPARATOR_DATAWIDTH-1:0] CC_SPEEDCOMPARATOR_limit_InBUS;
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
+reg [SPEEDCOMPARATOR_DATAWIDTH-1:0] CC_SPEEDCOMPARATOR_limit;
 //=======================================================
 //  Structural coding
 //=======================================================
+always @(negedge CC_SPEEDCOMPARATOR_loadSignal_InLow)
+begin
+	CC_SPEEDCOMPARATOR_limit = CC_SPEEDCOMPARATOR_limit_InBUS;
+end
+
+
 always @(CC_SPEEDCOMPARATOR_data_InBUS)
 begin
-	if( CC_SPEEDCOMPARATOR_data_InBUS == 23'b11111111111111111111111)
-		CC_SPEEDCOMPARATOR_T0_OutLow = 1'b0;
+	if( CC_SPEEDCOMPARATOR_data_InBUS >= CC_SPEEDCOMPARATOR_limit)
+		CC_SPEEDCOMPARATOR_signal_OutLow = 1'b0;
 	else 
-		CC_SPEEDCOMPARATOR_T0_OutLow = 1'b1;
+		CC_SPEEDCOMPARATOR_signal_OutLow = 1'b1;
 end
 
 endmodule
