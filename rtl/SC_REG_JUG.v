@@ -44,6 +44,7 @@ begin
 		RegJUG_Signal = {RegJUG_Register[0],RegJUG_Register[Reg_JUG_DATAWIDTH-1:1]};
 	else
 		RegJUG_Signal = RegJUG_Register;
+	end
 
 always @(posedge SC_RegJUG_CLOCK_50, posedge SC_RegJUG_RESET_InHigh)
 begin
