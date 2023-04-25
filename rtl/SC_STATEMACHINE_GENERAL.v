@@ -23,29 +23,15 @@ module SC_STATEMACHINE_GENERAL (
 	SC_STATEMACHINE_GENERAL_clear_OutLow,
 	SC_STATEMACHINE_GENERAL_load0_OutLow,
 	SC_STATEMACHINE_GENERAL_load1_OutLow,
-	SC_STATEMACHINE_GENERAL_shiftselection_Out,
 	SC_STATEMACHINE_GENERAL_timer_Out,
 	SC_STATEMACHINE_GENERAL_speedCounter_Out,
 
 	SC_STATEMACHINE_GENERAL_mux0_OutBUS,
-	SC_STATEMACHINE_GENERAL_mux1_OutBUS,
-	SC_STATEMACHINE_GENERAL_mux2_OutBUS,
-	SC_STATEMACHINE_GENERAL_mux3_OutBUS,
-	SC_STATEMACHINE_GENERAL_mux4_OutBUS,
-	SC_STATEMACHINE_GENERAL_mux5_OutBUS,
-	SC_STATEMACHINE_GENERAL_mux6_OutBUS,
-	SC_STATEMACHINE_GENERAL_mux7_OutBUS,
 	SC_STATEMACHINE_GENERAL_mux8_OutBUS,
 
-	SC_STATEMACHINE_GENERAL_regLoad0_OutLow,
-	SC_STATEMACHINE_GENERAL_regLoad1_OutLow,
-	SC_STATEMACHINE_GENERAL_regLoad2_OutLow,
-	SC_STATEMACHINE_GENERAL_regLoad3_OutLow,
-	SC_STATEMACHINE_GENERAL_regLoad4_OutLow,
-	SC_STATEMACHINE_GENERAL_regLoad5_OutLow,
-	SC_STATEMACHINE_GENERAL_regLoad6_OutLow,
-	SC_STATEMACHINE_GENERAL_regLoad7_OutLow,
+	SC_STATEMACHINE_GENERAL_random_OutLow,
 
+	SC_STATEMACHINE_GENERAL_STATE_OutBUS,
 
 	//////////// INPUTS //////////
 	SC_STATEMACHINE_GENERAL_CLOCK_50,
@@ -58,7 +44,6 @@ module SC_STATEMACHINE_GENERAL (
 	SC_STATEMACHINE_GENERAL_posJug1_InLow,
 	SC_STATEMACHINE_GENERAL_posJug2_InLow,
 	SC_STATEMACHINE_GENERAL_pointCounter_InBUS
-    
 );	
 //=======================================================
 //  PARAMETER declarations
@@ -72,7 +57,7 @@ localparam STATE_NIVEL_2									= 4;
 localparam STATE_NIVEL_3									= 5;
 localparam STATE_lose_j1									= 6;
 localparam STATE_lose_j2									= 7;
-localparam STATE_moverCarros_0								= 8;
+localparam STATE_moverCarros_0							= 8;
 localparam STATE_esperar_0									= 9;
 localparam STATE_fin 										= 10;
 
@@ -81,34 +66,20 @@ localparam STATE_fin 										= 10;
 //=======================================================
 output			SC_STATEMACHINE_GENERAL_clear_OutLow;
 output			SC_STATEMACHINE_GENERAL_load0_OutLow;
-output 			SC_STATEMACHINE_GENERAL_load1_OutLow;
-output reg		[1:0] SC_STATEMACHINE_GENERAL_shiftselection_Out;
-output reg		[3:0] SC_STATEMACHINE_GENERAL_timer_OutBUS;
+output 			SC_STATEMACHINE_GENERAL_timer_load0_OutLow;
+output			SC_STATEMACHINE_GENERAL_random_OutLow;
+output reg		[7:0] SC_STATEMACHINE_GENERAL_timer_OutBUS;
 output reg		[3:0] SC_STATEMACHINE_GENERAL_speedCounter_Out;
 
 output reg		[3:0] SC_STATEMACHINE_GENERAL_mux0_OutBUS;
-output reg		[3:0] SC_STATEMACHINE_GENERAL_mux1_OutBUS;
-output reg 		[3:0] SC_STATEMACHINE_GENERAL_mux2_OutBUS;
-output reg		[3:0] SC_STATEMACHINE_GENERAL_mux3_OutBUS;
-output reg		[3:0] SC_STATEMACHINE_GENERAL_mux4_OutBUS;
-output reg		[3:0] SC_STATEMACHINE_GENERAL_mux5_OutBUS;
-output reg		[3:0] SC_STATEMACHINE_GENERAL_mux6_OutBUS;
-output reg		[3:0] SC_STATEMACHINE_GENERAL_mux7_OutBUS;
 output reg		[3:0] SC_STATEMACHINE_GENERAL_mux8_OutBUS;
 
-output			SC_STATEMACHINE_GENERAL_regLoad0_OutLow;
-output			SC_STATEMACHINE_GENERAL_regLoad1_OutLow;
-output			SC_STATEMACHINE_GENERAL_regLoad2_OutLow;
-output			SC_STATEMACHINE_GENERAL_regLoad3_OutLow;
-output			SC_STATEMACHINE_GENERAL_regLoad4_OutLow;
-output			SC_STATEMACHINE_GENERAL_regLoad5_OutLow;
-output			SC_STATEMACHINE_GENERAL_regLoad6_OutLow;
-output			SC_STATEMACHINE_GENERAL_regLoad7_OutLow;
+output reg			[3:0]SC_STATEMACHINE_GENERAL_STATE_OutBUS;
 
 
 
 input			SC_STATEMACHINE_GENERAL_CLOCK_50;
-input 			SC_STATEMACHINE_GENERAL_RESET_InHigh;
+input 		SC_STATEMACHINE_GENERAL_RESET_InHigh;
 input			SC_STATEMACHINE_GENERAL_startButton_InLow;
 input			SC_STATEMACHINE_JUG1_ready_InLow;
 input			SC_STATEMACHINE_JUG2_ready_InLow;
@@ -116,13 +87,14 @@ input			SC_STATEMACHINE_GENERAL_timer_InLow;
 input			SC_STATEMACHINE_GENERAL_speedComparator_InLow;
 input			SC_STATEMACHINE_GENERAL_posJug1_InLow;
 input			SC_STATEMACHINE_GENERAL_posJug2_InLow;
-input 			[7:0] SC_STATEMACHINE_GENERAL_pointCounter_InBUS;
+input 		[7:0] SC_STATEMACHINE_GENERAL_pointCounter_InBUS;
 
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
 reg [3:0] STATE_Register;
 reg [3:0] STATE_Signal;
+reg reg_wait_bool;
 //=======================================================
 //  Structural coding
 //=======================================================
@@ -202,7 +174,11 @@ begin
 //=========================================================
 	STATE_RESET_0 :	
 		begin
-			SC_STATEMACHINE_GENERAL_clear_OutLow =  1'b1;
+			//todo
+			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b0;
+			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b1;
+			SC_STATEMACHINE_GENERAL_load1_OutLow = 1'b1;
+
 		end
 //=========================================================
 // STATE_START
@@ -210,81 +186,127 @@ begin
 	STATE_START_0 :	
 		begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_load1_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_shiftselection_Out  = 2'b11; 
-		end
-//=========================================================
-// STATE_CHECK
-//=========================================================
-	STATE_CHECK_0 :
-		begin
-			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_load1_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_shiftselection_Out  = 2'b11; 
-		end
-//=========================================================
-// STATE_CHECK
-//=========================================================
-	STATE_CHECK_1 :
-		begin
-			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_load1_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_shiftselection_Out  = 2'b11; 
-		end
-//=========================================================
-// STATE_INIT_0
-//=========================================================
-	STATE_INIT_0 :	
-		begin
-			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b0;
-			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_load1_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_shiftselection_Out  = 2'b11; 
-		end
-//=========================================================
-// STATE_UP_0
-//=========================================================
-	STATE_UP_0 :	
-		begin
-			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b1;
+			SC_STATEMACHINE_GENERAL_mux0_OutBUS = 4'b0001;
+			SC_STATEMACHINE_GENERAL_mux8_OutBUS = 1'b0;
 			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b0;
-			SC_STATEMACHINE_GENERAL_load1_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_shiftselection_Out  = 2'b11; 
 		end
 //=========================================================
-// STATE_DOWN_0
+// STATE_GO
 //=========================================================
-	STATE_DOWN_0 :	
+	STATE_GO_0 :
 		begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_load1_OutLow = 1'b0;
-			SC_STATEMACHINE_GENERAL_shiftselection_Out  = 2'b11; 
+			SC_STATEMACHINE_GENERAL_mux0_OutBUS = 4'b0010;
+			SC_STATEMACHINE_GENERAL_mux8_OutBUS = 1'b0;
+			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b0;
 		end
 //=========================================================
-// STATE_LEFT_0
+// STATE_NIVEL_1
 //=========================================================
-	STATE_LEFT_0 :	
+	STATE_NIVEL_1 :
 		begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_load1_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_shiftselection_Out  = 2'b01; 
+			SC_STATEMACHINE_GENERAL_mux0_OutBUS = 4'b0011;
+			SC_STATEMACHINE_GENERAL_mux8_OutBUS = 1'b0;
+			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b0;
+			if (reg_wait_bool == 1'b0) begin
+				SC_STATEMACHINE_GENERAL_timer_InLow = 60;
+				SC_STATEMACHINE_GENERAL_timer_load0_OutLow = 1'b0;
+				reg_wait_bool = 1'b1;
+			end
+			else SC_STATEMACHINE_GENERAL_timer_load0_OutLow = 1'b1;
 		end
 //=========================================================
-// STATE_RIGHT_0
+// STATE_NIVEL_2
 //=========================================================
-	STATE_RIGHT_0 :	
+	STATE_NIVEL_2 :
 		begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_load1_OutLow = 1'b1;
-			SC_STATEMACHINE_GENERAL_shiftselection_Out  = 2'b10; 
+			SC_STATEMACHINE_GENERAL_mux0_OutBUS = 4'b0100;
+			SC_STATEMACHINE_GENERAL_mux8_OutBUS = 1'b0;
+			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b0;
+			if (reg_wait_bool == 1'b0) begin
+				SC_STATEMACHINE_GENERAL_timer_InLow = 60;
+				SC_STATEMACHINE_GENERAL_timer_load0_OutLow = 1'b0;
+				reg_wait_bool = 1'b1;
+			end
+			else SC_STATEMACHINE_GENERAL_timer_load0_OutLow = 1'b1;
 		end
-
+//=========================================================
+// STATE_NIVEL_3
+//=========================================================
+	STATE_NIVEL_3 :
+		begin
+			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b1;
+			SC_STATEMACHINE_GENERAL_mux0_OutBUS = 4'b0101;
+			SC_STATEMACHINE_GENERAL_mux8_OutBUS = 1'b0;
+			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b0;
+			if (reg_wait_bool == 1'b0) begin
+				SC_STATEMACHINE_GENERAL_timer_InLow = 60;
+				SC_STATEMACHINE_GENERAL_timer_load0_OutLow = 1'b0;
+				reg_wait_bool = 1'b1;
+			end
+			else SC_STATEMACHINE_GENERAL_timer_load0_OutLow = 1'b1;
+		end
+//=========================================================
+// STATE_lose_jug1
+//=========================================================
+	STATE_lose_jug1 :
+		begin
+			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b1;
+			SC_STATEMACHINE_GENERAL_mux0_OutBUS = 4'b0111;
+			SC_STATEMACHINE_GENERAL_mux8_OutBUS = 1'b0;
+			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b0;
+			if (reg_wait_bool == 1'b0) begin
+				SC_STATEMACHINE_GENERAL_timer_InLow = 60;
+				SC_STATEMACHINE_GENERAL_timer_load0_OutLow = 1'b0;
+				reg_wait_bool = 1'b1;
+			end
+			else SC_STATEMACHINE_GENERAL_timer_load0_OutLow = 1'b1;
+		end
+//=========================================================
+// STATE_lose_jug2
+//=========================================================
+	STATE_lose_jug2 :
+		begin
+			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b1;
+			SC_STATEMACHINE_GENERAL_mux0_OutBUS = 4'b1000;
+			SC_STATEMACHINE_GENERAL_mux8_OutBUS = 1'b0;
+			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b0;
+			if (reg_wait_bool == 1'b0) begin
+				SC_STATEMACHINE_GENERAL_timer_InLow = 60;
+				SC_STATEMACHINE_GENERAL_timer_load0_OutLow = 1'b0;
+				reg_wait_bool = 1'b1;
+			end
+			else SC_STATEMACHINE_GENERAL_timer_load0_OutLow = 1'b1;
+		end
+//=========================================================
+// STATE_moverCarros
+//=========================================================
+	STATE_moverCarros_0 :
+		begin
+			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b1;
+			SC_STATEMACHINE_GENERAL_mux0_OutBUS = 4'b1001;
+			SC_STATEMACHINE_GENERAL_mux8_OutBUS = 1'b1;
+			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b0;
+			SC_STATEMACHINE_GENERAL_random_OutLow = 1'b0;
+			//TODO: speed timer???????????
+			reg_wait_bool = 1'b0;
+			
+		end
+//=========================================================
+// STATE_esperar_0
+//=========================================================
+	STATE_esperar_0 :
+		begin
+			SC_STATEMACHINE_GENERAL_clear_OutLow = 1'b1;
+			SC_STATEMACHINE_GENERAL_mux0_OutBUS = 4'b1001;
+			SC_STATEMACHINE_GENERAL_mux8_OutBUS = 1'b1;
+			SC_STATEMACHINE_GENERAL_load0_OutLow = 1'b1;
+			SC_STATEMACHINE_GENERAL_random_OutLow = 1'b1;
+			//TODO: speed timer???????????
+			reg_wait_bool = 1'b0;
+		end
 //=========================================================
 // DEFAULT
 //=========================================================
@@ -297,4 +319,6 @@ begin
 		end
 	endcase
 end
+
+assign SC_STATEMACHINE_GENERAL_STATE_OutBUS = STATE_Register;
 endmodule
