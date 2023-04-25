@@ -22,7 +22,7 @@ module CC_PosCOMPARATOR_JUG1 #(parameter PosCOMPARATOR_DATAWIDTH=8)(
 //////////// OUTPUTS //////////
 	CC_PosCOMPARATOR_JUG1_OutBUS,
 //////////// INPUTS //////////
-	CC_PosCOMPARATOR_JUG1_fila0
+	CC_PosCOMPARATOR_JUG1_fila0,
 	CC_PosCOMPARATOR_JUG1_posjug1
 	
 );
@@ -33,8 +33,9 @@ module CC_PosCOMPARATOR_JUG1 #(parameter PosCOMPARATOR_DATAWIDTH=8)(
 //=======================================================
 //  PORT declarations
 //=======================================================
-output	reg 	CC_PosCOMPARATOR_JUG1_fila0;
-output	reg 	CC_PosCOMPARATOR_JUG1_posjug1;
+output	reg 	CC_PosCOMPARATOR_JUG1_fila0_Out;
+output	reg 	CC_PosCOMPARATOR_JUG1_posjug1_Out;
+
 input 	[PosCOMPARATOR_JUG1_DATAWIDTH-1:0] CC_PosCOMPARATOR_JUG1_fila0;
 input 	[PosCOMPARATOR_JUG1_DATAWIDTH-1:0] CC_PosCOMPARATOR_JUG1_posjug1;
 //=======================================================
@@ -45,7 +46,7 @@ input 	[PosCOMPARATOR_JUG1_DATAWIDTH-1:0] CC_PosCOMPARATOR_JUG1_posjug1;
 //=======================================================
 always @(CC_PosCOMPARATOR_JUG1_fila0, CC_PosCOMPARATOR_JUG1_posjug1)
 begin
-	if( CC_PosCOMPARATOR_JUG1_fila0 ==CC_PosCOMPARATOR_JUG1_posjug1)
+	if( CC_PosCOMPARATOR_JUG1_fila0 == CC_PosCOMPARATOR_JUG1_posjug1)
 		CC_PosCOMPARATOR_JUG1_OutBUS = 1'b1;
 	else 
 		CC_PosCOMPARATOR_JUG1_OutBUS = 1'b0;

@@ -52,6 +52,6 @@ begin
 		CC_SIDECOMPARATOR_JUG2_derecha_OutLow = 1'b0;
 	else 
 		CC_SIDECOMPARATOR_JUG2_derecha_OutLow = 1'b1;
-
+end 
 	
 endmodule
