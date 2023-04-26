@@ -20,13 +20,17 @@
 //=======================================================
 module BB_SYSTEM (
 //////////// OUTPUTS //////////
+	BB_SYSTEM_display_OutBUS,
 	BB_SYSTEM_max7219DIN_Out,
 	BB_SYSTEM_max7219NCS_Out,
 	BB_SYSTEM_max7219CLK_Out,
-
 	BB_SYSTEM_startButton_Out, 
 	BB_SYSTEM_leftButton_Out,
 	BB_SYSTEM_rightButton_Out,
+
+	BB_SYSTEM_TEST0,
+	BB_SYSTEM_TEST1,
+	BB_SYSTEM_TEST2,
 
 //////////// INPUTS //////////
 	BB_SYSTEM_CLOCK_50,
@@ -126,6 +130,9 @@ output		BB_SYSTEM_max7219CLK_Out;
 output 		BB_SYSTEM_startButton_Out;
 output 		BB_SYSTEM_leftButton_Out;
 output 		BB_SYSTEM_rightButton_Out;
+output 		BB_SYSTEM_TEST0;
+output 		BB_SYSTEM_TEST1;
+output 		BB_SYSTEM_TEST2;
 
 input		BB_SYSTEM_CLOCK_50;
 input		BB_SYSTEM_RESET_InHigh;
@@ -164,21 +171,21 @@ SC_DEBOUNCE1 SC_DEBOUNCE1_u0 (
 // port map - connection between master ports and signals/registers   
 	.SC_DEBOUNCE1_button_Out(BB_SYSTEM_startButton_InLow_cwire),
 	.SC_DEBOUNCE1_CLOCK_50(BB_SYSTEM_CLOCK_50),
-	.SC_DEBOUNCE1_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_DEBOUNCE1_RESET_InHigh_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_DEBOUNCE1_button_In(~BB_SYSTEM_startButton_InLow)
 );
 SC_DEBOUNCE1 SC_DEBOUNCE1_u1 (
 // port map - connection between master ports and signals/registers   
 	.SC_DEBOUNCE1_button_Out(BB_SYSTEM_leftButton_InLow_cwire),
 	.SC_DEBOUNCE1_CLOCK_50(BB_SYSTEM_CLOCK_50),
-	.SC_DEBOUNCE1_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_DEBOUNCE1_RESET_InHigh_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_DEBOUNCE1_button_In(~BB_SYSTEM_leftButton_InLow)
 );
 SC_DEBOUNCE1 SC_DEBOUNCE1_u2 (
 // port map - connection between master ports and signals/registers   
 	.SC_DEBOUNCE1_button_Out(BB_SYSTEM_rightButton_InLow_cwire),
 	.SC_DEBOUNCE1_CLOCK_50(BB_SYSTEM_CLOCK_50),
-	.SC_DEBOUNCE1_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_DEBOUNCE1_RESET_InHigh_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_DEBOUNCE1_button_In(~BB_SYSTEM_rightButton_InLow)
 );
 
@@ -188,22 +195,172 @@ SC_DEBOUNCE1 SC_DEBOUNCE1_u2 (
 // Registros de jugador
 SC_REGJUG SC_REGJUG_u0 (
 // conexiones de entrada al registro del jugador 1
-	.SC_REGJUG_clock(BB_SYSTEM_CLOCK_50),
-	.SC_REGJUG_reset(BB_SYSTEM_RESET_InHigh),
+	.SC_REGJUG_CLOCK_50(BB_SYSTEM_CLOCK_50),
+	.SC_REGJUG_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_RegJUG_clear_InLow(SC_STATEMACHINE_JUG1_clear0_cwire),
-	.SC_REGJUG_load_InLow(SC_STATEMACHINE_JUG1_load0_cwire)
+	.SC_REGJUG_load_InLow(SC_STATEMACHINE_JUG1_load0_cwire),
 	.SC_REGJUG_shiftselection_In(SC_STATEMACHINE_JUG1_shiftselection0_cwire),
-	//No se de donde vendría el bus de datos de entrada (dataIn)
-	.SC_REGJUG_dataIn(DATA_FIXED_VM_Reg_JUG_0),
+	.SC_REGJUG_data_OutBUS(REGJUG1_COMPARATOR_cwire)
+	
 );
 SC_REGJUG SC_REGJUG_u1 (
-	.SC_REGJUG_clock(BB_SYSTEM_CLOCK_50),
-	.SC_REGJUG_reset(BB_SYSTEM_RESET_InHigh),
-	.SC_RegJUG_clear_InLow(SC_STATEMACHINE_JUG1_clear0_cwire),
-	.SC_REGJUG_load_InLow(SC_STATEMACHINE_JUG1_load0_cwire)
-	.SC_REGJUG_shiftselection_In(SC_STATEMACHINE_JUG1_shiftselection0_cwire),
-	//No se de donde vendría el bus de datos de entrada (dataIn)
-	.SC_REGJUG_dataIn(DATA_FIXED_VM_Reg_JUG_0),
+	.SC_REGJUG_CLOCK_50(BB_SYSTEM_CLOCK_50),
+	.SC_REGJUG_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_RegJUG_clear_InLow(SC_STATEMACHINE_JUG2_clear0_cwire),
+	.SC_REGJUG_load_InLow(SC_STATEMACHINE_JUG2_load0_cwire),
+	.SC_REGJUG_shiftselection_In(SC_STATEMACHINE_JUG2_shiftselection0_cwire),
+	.SC_REGJUG_data_OutBUS(REGJUG2_COMPARATOR_cwire)
+	
+);
+
+SC_STATEMACHINE_JUG1 SC_STATEMACHINE_JUG1_u1 (
+
+	.SC_STATEMACHINE_JUG1_CLOCK_50(BB_SYSTEM_CLOCK_50),
+	.SC_STATEMACHINE_JUG1_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_STATEMACHINE_JUG1_startButton_InLow(BB_SYSTEM_startButton_InLow_cwire),
+	.SC_STATEMACHINE_JUG1_leftButton_InLow(BB_SYSTEM_leftButton_InLow_cwire),
+	.SC_STATEMACHINE_JUG1_rightButton_InLow(BB_SYSTEM_rightButton_InLow_cwire),
+	.SC_STATEMACHINE_JUG1_izquierdacomparator_InLow(CC_SIDECOMPARATOR_JUG1_izquierdaout_cwire),
+	.SC_STATEMACHINE_JUG1_derechacomparator_InLow(CC_SIDECOMPARATOR_JUG1_derechaout_cwire),
+	.SC_STATEMACHINE_JUG1_clear_OutLow(SC_STATEMACHINE_JUG1_clear0_cwire),
+	.SC_STATEMACHINE_JUG1_shiftselection_Out(SC_STATEMACHINE_JUG1_shiftselection0_cwire)
+
+);
+
+SC_STATEMACHINE_JUG2 SC_STATEMACHINE_JUG2_u1 (
+
+	.SC_STATEMACHINE_JUG2_CLOCK_50(BB_SYSTEM_CLOCK_50),
+	.SC_STATEMACHINE_JUG2_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_STATEMACHINE_JUG2_startButton_InLow(BB_SYSTEM_startButton_InLow_cwire),
+	.SC_STATEMACHINE_JUG2_leftButton_InLow(BB_SYSTEM_leftButton_InLow_cwire),
+	.SC_STATEMACHINE_JUG2_rightButton_InLow(BB_SYSTEM_rightButton_InLow_cwire),
+	.SC_STATEMACHINE_JUG2_izquierdacomparator_InLow(CC_SIDECOMPARATOR_JUG2_izquierdaout_cwire),
+	.SC_STATEMACHINE_JUG2_derechacomparator_InLow(CC_SIDECOMPARATOR_JUG2_derechaout_cwire),
+	.SC_STATEMACHINE_JUG2_clear_OutLow(SC_STATEMACHINE_JUG2_clear0_cwire),
+	.SC_STATEMACHINE_JUG2_shiftselection_Out(SC_STATEMACHINE_JUG2_shiftselection0_cwire)
+
+);
+
+//Comparadores LADOS del jugador
+
+CC_SIDECOMPARATOR_JUG1 CC_SIDECOMPARATOR_JUG1_u1 (
+
+	.CC_SIDECOMPARATOR_JUG1_data_InBUS(REGJUG1_COMPARATOR_cwire),
+	.CC_SIDECOMPARATOR_JUG1_derecha_OutLow(CC_SIDECOMPARATOR_JUG1_derechaout_cwire),
+	.CC_SIDECOMPARATOR_JUG1_izquierda_OutLow(CC_SIDECOMPARATOR_JUG1_izquierdaout_cwire)
+);
+
+
+CC_SIDECOMPARATOR_JUG2 CC_SIDECOMPARATOR_JUG2_u1 (
+
+	.CC_SIDECOMPARATOR_JUG2_data_InBUS(REGJUG2_COMPARATOR_cwire),
+	.CC_SIDECOMPARATOR_JUG2_derecha_OutLow(CC_SIDECOMPARATOR_JUG2_derechaout_cwire),
+	.CC_SIDECOMPARATOR_JUG2_izquierda_OutLow(CC_SIDECOMPARATOR_JUG2_izquierdaout_cwire)
+);
+
+
+//Comparadores POSICION del jugador con la matriz
+
+CC_POSCOMPARATOR_JUG1 CC_POSCOMPARATOR_JUG1_u1 (
+
+	.CC_PCC_PosCOMPARATOR_JUG1_posjug1(REGJUG1_COMPARATOR_cwire),
+	.CC_PosCOMPARATOR_JUG1_fila0(MATRIX0_COMPARATOR1_cwire),
+	.CC_PosCOMPARATOR_JUG1_OutBUS(CC_POSCOMPARATOR_JUG1_posicionout_cwire)
+);
+
+CC_POSCOMPARATOR_JUG2 CC_POSCOMPARATOR_JUG2_u1 (
+	
+	.CC_PCC_PosCOMPARATOR_JUG2_posjug2(REGJUG2_COMPARATOR_cwire),
+	.CC_PosCOMPARATOR_JUG2_fila0(MATRIX0_COMPARATOR2_cwire),
+	.CC_PosCOMPARATOR_JUG2_OutBUS(CC_POSCOMPARATOR_JUG2_posicionout_cwire)
+);
+
+
+//Conexiones registro de la matriz
+
+SC_Reg_MATRIX SC_Reg_MATRIX_u7 (
+	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
+	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
+	.SC_Reg_MATRIX_load0_InLow(SC_STATEMACHINE_GENERAL_loadMATRIX_cwire),
+	.SC_Reg_MATRIX_data0_InBUS(MUX_81toMATRIX_cwire),
+	.SC_Reg_MATRIX_data_OutBUS(MATRIX_toMUX_81_cwire)
+	
+);
+
+
+SC_Reg_MATRIX SC_Reg_MATRIX_u6 (
+	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
+	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
+	.SC_Reg_MATRIX_load0_InLow(SC_STATEMACHINE_GENERAL_loadMATRIX_cwire),
+	.SC_Reg_MATRIX_data0_InBUS(MUX_81toMATRIX_cwire),
+	.SC_Reg_MATRIX_data_OutBUS(MATRIX_toMUX_81_cwire)
+	
+);
+
+SC_Reg_MATRIX SC_Reg_MATRIX_u5 (
+	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
+	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
+	.SC_Reg_MATRIX_load0_InLow(SC_STATEMACHINE_GENERAL_loadMATRIX_cwire),
+	.SC_Reg_MATRIX_data0_InBUS(MUX_81toMATRIX_cwire),
+	.SC_Reg_MATRIX_data_OutBUS(MATRIX_toMUX_81_cwire)
+	
+);
+
+SC_Reg_MATRIX SC_Reg_MATRIX_u4 (
+	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
+	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
+	.SC_Reg_MATRIX_load0_InLow(SC_STATEMACHINE_GENERAL_loadMATRIX_cwire),
+	.SC_Reg_MATRIX_data0_InBUS(MUX_81toMATRIX_cwire),
+	.SC_Reg_MATRIX_data_OutBUS(MATRIX_toMUX_81_cwire)
+	
+);
+
+SC_Reg_MATRIX SC_Reg_MATRIX_u3 (
+	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
+	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
+	.SC_Reg_MATRIX_load0_InLow(SC_STATEMACHINE_GENERAL_loadMATRIX_cwire),
+	.SC_Reg_MATRIX_data0_InBUS(MUX_81toMATRIX_cwire),
+	.SC_Reg_MATRIX_data_OutBUS(MATRIX_toMUX_81_cwire)
+	
+);
+
+SC_Reg_MATRIX SC_Reg_MATRIX_u2 (
+	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
+	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
+	.SC_Reg_MATRIX_load0_InLow(SC_STATEMACHINE_GENERAL_loadMATRIX_cwire),
+	.SC_Reg_MATRIX_data0_InBUS(MUX_81toMATRIX_cwire),
+	.SC_Reg_MATRIX_data_OutBUS(MATRIX_toMUX_81_cwire)
+	
+);
+
+SC_Reg_MATRIX SC_Reg_MATRIX_u1 (
+	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
+	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
+	.SC_Reg_MATRIX_load0_InLow(SC_STATEMACHINE_GENERAL_loadMATRIX_cwire),
+	.SC_Reg_MATRIX_data0_InBUS(MUX_81toMATRIX_cwire),
+	.SC_Reg_MATRIX_data_OutBUS(MATRIX_toMUX_81_cwire)
+	
+);
+
+SC_Reg_MATRIX0 SC_Reg_MATRIX0_u0 (
+	.SC_Reg_MATRIX0_CLOCK_50(BB_SYSTEM_CLOCK_50),
+	.SC_Reg_MATRIX0_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_Reg_MATRIX0_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
+	.SC_Reg_MATRIX0_load0_InLow(SC_STATEMACHINE_GENERAL_loadMATRIX_cwire),
+	.SC_Reg_MATRIX0_data0_InBUS(MUX_81toMATRIX_cwire),
+	.SC_Reg_MATRIX0_OR1_OutBUS(MATRIX0_OR1_cwire)
+	.SC_Reg_MATRIX0_OR2_OutBUS(MATRIX0_OR2_cwire)
+	.SC_Reg_MATRIX0_COMPARATOR1_OutBUS(MATRIX0_COMPARATOR1_cwire)
+	.SC_Reg_MATRIX0_COMPARATOR2_OutBUS(MATRIX0_COMPARATOR2_cwire)
+	.SC_Reg_MATRIX0_MUX21_OutBUS(MATRIX0_MUX21_cwire)
+	
 );
 
 
@@ -211,14 +368,14 @@ SC_REGJUG SC_REGJUG_u1 (
 //######################################################################
 //#	TO LED MATRIZ: VISUALIZATION
 //######################################################################
-assign regGAME_data0_wire = DATA_FIXED_INITREGPOINT_0;
-assign regGAME_data1_wire = DATA_FIXED_INITREGPOINT_1;
-assign regGAME_data2_wire = DATA_FIXED_INITREGPOINT_2;
-assign regGAME_data3_wire = DATA_FIXED_INITREGPOINT_3;
-assign regGAME_data4_wire = DATA_FIXED_INITREGPOINT_4;
-assign regGAME_data5_wire = DATA_FIXED_INITREGPOINT_5;
-assign regGAME_data6_wire = DATA_FIXED_INITREGPOINT_6;
-assign regGAME_data7_wire = DATA_FIXED_INITREGPOINT_7;
+assign regGAME_data0_wire = SC_Reg_MATRIX_u0;
+assign regGAME_data1_wire = SC_Reg_MATRIX_u1;
+assign regGAME_data2_wire = SC_Reg_MATRIX_u2;
+assign regGAME_data3_wire = SC_Reg_MATRIX_u3;
+assign regGAME_data4_wire = SC_Reg_MATRIX_u4;
+assign regGAME_data5_wire = SC_Reg_MATRIX_u5;
+assign regGAME_data6_wire = SC_Reg_MATRIX_u6;
+assign regGAME_data7_wire = SC_Reg_MATRIX_u7;
 
 assign data_max =(add==3'b000)?{regGAME_data0_wire[7],regGAME_data1_wire[7],regGAME_data2_wire[7],regGAME_data3_wire[7],regGAME_data4_wire[7],regGAME_data5_wire[7],regGAME_data6_wire[7],regGAME_data7_wire[7]}:
 	       (add==3'b001)?{regGAME_data0_wire[6],regGAME_data1_wire[6],regGAME_data2_wire[6],regGAME_data3_wire[6],regGAME_data4_wire[6],regGAME_data5_wire[6],regGAME_data6_wire[6],regGAME_data7_wire[6]}:
@@ -237,7 +394,7 @@ matrix_ctrl matrix_ctrl_unit_0(
 .disp_addr(add),
 .intensity(4'hA),
 .clk(BB_SYSTEM_CLOCK_50),
-.reset(BB_SYSTEM_RESET_InHigh) //~lowRst_System
+.RESET_InHigh(BB_SYSTEM_RESET_InHigh) //~lowRst_System
  ); 
  
 //######################################################################

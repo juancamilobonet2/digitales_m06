@@ -28,7 +28,8 @@ module SC_STATEMACHINE_JUG2 (
 	SC_STATEMACHINE_JUG2_startButton_InLow,
 	SC_STATEMACHINE_JUG2_leftButton_InLow,
 	SC_STATEMACHINE_JUG2_rightButton_InLow,
-	SC_STATEMACHINE_JUG2_sidecomparator_InLow
+	SC_STATEMACHINE_JUG2_izquierdacomparator_InLow,
+	SC_STATEMACHINE_JUG2_derechacomparator_InLow
 );	
 //=======================================================
 //  PARAMETER declarations
