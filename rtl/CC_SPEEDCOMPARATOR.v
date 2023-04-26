@@ -36,6 +36,7 @@ module CC_SPEEDCOMPARATOR #(parameter SPEEDCOMPARATOR_DATAWIDTH=8)(
 output	CC_SPEEDCOMPARATOR_signal_OutLow;
 input 	[SPEEDCOMPARATOR_DATAWIDTH-1:0] CC_SPEEDCOMPARATOR_data_InBUS;
 input 	[SPEEDCOMPARATOR_DATAWIDTH-1:0] CC_SPEEDCOMPARATOR_limit_InBUS;
+input 	CC_SPEEDCOMPARATOR_loadSignal_InLow;
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
