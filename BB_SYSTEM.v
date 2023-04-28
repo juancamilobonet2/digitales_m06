@@ -147,6 +147,51 @@ wire 	BB_SYSTEM_startButton_InLow_cwire;
 wire 	BB_SYSTEM_leftButton_InLow_cwire;
 wire 	BB_SYSTEM_rightButton_InLow_cwire;
 
+//	JUGADOR 1
+wire 	SC_STATEMACHINE_JUG1_clear0_cwire;
+wire 	SC_STATEMACHINE_JUG1_load0_cwire;
+wire 	SC_STATEMACHINE_JUG1_shiftselection0_cwire;
+wire    REGJUG1_COMPARATOR_cwire;
+wire    CC_SIDECOMPARATOR_JUG1_derechaout_cwire;
+wire    CC_SIDECOMPARATOR_JUG1_izquierdaout_cwire;
+wire    MATRIX0_COMPARATOR1_cwire;
+wire    CC_POSCOMPARATOR_JUG1_posicionout_cwire;
+
+
+//	JUGADOR 2
+wire 	SC_STATEMACHINE_JUG2_clear0_cwire;
+wire 	SC_STATEMACHINE_JUG2_load0_cwire;
+wire 	SC_STATEMACHINE_JUG2_shiftselection0_cwire;
+wire    REGJUG2_COMPARATOR_cwire;
+wire    CC_SIDECOMPARATOR_JUG2_derechaout_cwire;
+wire    CC_SIDECOMPARATOR_JUG2_izquierdaout_cwire;
+wire    MATRIX0_COMPARATOR2_cwire;
+wire    CC_POSCOMPARATOR_JUG2_posicionout_cwire;
+
+// Contador Puntos
+wire 	SC_STATEMACHINE_GENERAL_upcount0_cwire;
+wire 	SC_POINTCOUNTER_data0_cwire;
+
+//  Velocidad
+wire 	SC_STATEMACHINE_GENERAL_upcount1_cwire;
+wire 	SC_SPEEDCOUNTER_speed_cwire;
+wire	SC_STATEMACHINE_GENERAL_loadspeed_cwire;
+wire	CC_SPEEDCOMPARATOR_speedout_cwire;
+
+// Registros matriz
+wire 	SC_STATEMACHINE_GENERAL_loadMATRIX_cwire;
+wire 	MUX_16x1toMATRIX_cwire;
+wire 	MATRIX_toMUX_16x1_cwire;
+wire	RANDOM_cwire;
+wire	STATEMACHINE_GENERAL_toMUX16x1_07_cwire;
+wire	MUX16x1__07_cwire;
+wire	MUX16x1__06_cwire;
+
+
+
+
+
+
 // GAME
 wire [DATAWIDTH_BUS-1:0] regGAME_data7_wire;
 wire [DATAWIDTH_BUS-1:0] regGAME_data6_wire;
@@ -290,7 +335,7 @@ SC_SPEEDCOUNTER SC_SPEEDCOUNTER_u1 (
 
 	.SC_SPEEDCOUNTER_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_SPEEDCOUNTER_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
-	.SC_SPEEDCOUNTER_upcount_InLow(SC_STATEMACHINE_GENERAL_upcount_cwire),
+	.SC_SPEEDCOUNTER_upcount_InLow(SC_STATEMACHINE_GENERAL_upcount1_cwire),
 	.SC_SPEEDCOUNTER_data_OutBUS(SC_SPEEDCOUNTER_speed_cwire)
 
 );
@@ -300,7 +345,7 @@ SC_SPEEDCOUNTER SC_SPEEDCOUNTER_u1 (
 CC_SPEEDCOMPARATOR CC_SPEEDCOMPARATOR_u1(
 	.CC_SPEEDCOMPARATOR_data_InBUS(SC_SPEEDCOUNTER_speed_cwire),
 	.CC_SPEEDCOMPARATOR_limit_InBUS(SC_STATEMACHINE_GENERAL_speedlimit_cwire)
-	.CC_SPEEDCOMPARATOR_loadSignal_InLow(SC_STATEMACHINE_GENERAL_load_cwire)
+	.CC_SPEEDCOMPARATOR_loadSignal_InLow(SC_STATEMACHINE_GENERAL_loadspeed_cwire)
 	.CC_SPEEDCOMPARATOR_signal_OutLow(CC_SPEEDCOMPARATOR_speedout_cwire)
 
 );
@@ -408,27 +453,27 @@ CC_MUX16X1 CC_MUX16X1_u7 (
 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_INITReg_JUG_7),
 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_GO_Reg_JUG_7),
 	.CC_MUX16X1_data3_InBUS(DATA_FIXED_L1_Reg_JUG_7),
-	.CC_MUX16X1_data4_InBUS(),
-	.CC_MUX16X1_data5_InBUS(),
-	.CC_MUX16X1_data6_InBUS(),
-	.CC_MUX16X1_data7_InBUS(),
-	.CC_MUX16X1_data8_InBUS(),
-	.CC_MUX16X1_data9_InBUS(),
-	.CC_MUX16X1_data10_InBUS(),
-	.CC_MUX16X1_z_Out()
+	.CC_MUX16X1_data4_InBUS(DATA_FIXED_L2_Reg_JUG_7),
+	.CC_MUX16X1_data5_InBUS(DATA_FIXED_L3_Reg_JUG_7),
+	.CC_MUX16X1_data6_InBUS(DATA_FIXED_VM_Reg_JUG_7),
+	.CC_MUX16X1_data7_InBUS(DATA_FIXED_MV_Reg_JUG_7),
+	.CC_MUX16X1_data8_InBUS(DATA_FIXED_GANADOR_Reg_JUG_7),
+	.CC_MUX16X1_data9_InBUS(STATEMACHINE_GENERAL_toMUX16x1_07_cwire),
+	.CC_MUX16X1_data10_InBUS(RANDOM_cwire),
+	.CC_MUX16X1_z_Out(MUX16x1__07_cwire)
 );
 
 CC_MUX16X1 CC_MUX16X1_u6 (
 	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_6),
 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_6),
 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_6),
-	.CC_MUX16X1_data3_InBUS,
-	.CC_MUX16X1_data4_InBUS,
-	.CC_MUX16X1_data5_InBUS,
-	.CC_MUX16X1_data6_InBUS,
-	.CC_MUX16X1_data7_InBUS,
-	.CC_MUX16X1_data8_InBUS,
-	.CC_MUX16X1_z_Out
+	.CC_MUX16X1_data3_InBUS(DATA_FIXED_L2_Reg_JUG_6),
+	.CC_MUX16X1_data4_InBUS(DATA_FIXED_L3_Reg_JUG_6),
+	.CC_MUX16X1_data5_InBUS(DATA_FIXED_VM_Reg_JUG_6),
+	.CC_MUX16X1_data6_InBUS(DATA_FIXED_MV_Reg_JUG_6),
+	.CC_MUX16X1_data7_InBUS(DATA_FIXED_GANADOR_Reg_JUG_6),
+	.CC_MUX16X1_data8_InBUS(STATEMACHINE_GENERAL_toMUX16x1_06_cwire),
+	.CC_MUX16X1_z_Out(MUX16x1__06_cwire)
 );
 
 CC_MUX16X1 CC_MUX16X1_u5 (
