@@ -403,111 +403,111 @@ SC_POINTCOUNTER SC_POINTCOUNTER_u1 (
 
 //Multiplexor de 16 a 1
 
-CC_MUX16X1 CC_MUX16X1_u7 (
-	.CC_MUX16X1_select_InBUS(SC_STATEMACHINE_GENERAL_select_wire),
-	.CC_MUX16X1_data1_InBUS(DATA_FIXED_INITReg_JUG_7),
-	.CC_MUX16X1_data2_InBUS(DATA_FIXED_GO_Reg_JUG_7),
-	.CC_MUX16X1_data3_InBUS(DATA_FIXED_L1_Reg_JUG_7),
-	.CC_MUX16X1_data4_InBUS(),
-	.CC_MUX16X1_data5_InBUS(),
-	.CC_MUX16X1_data6_InBUS(),
-	.CC_MUX16X1_data7_InBUS(),
-	.CC_MUX16X1_data8_InBUS(),
-	.CC_MUX16X1_data9_InBUS(),
-	.CC_MUX16X1_data10_InBUS(),
-	.CC_MUX16X1_z_Out()
-);
+// CC_MUX16X1 CC_MUX16X1_u7 (
+// 	.CC_MUX16X1_select_InBUS(SC_STATEMACHINE_GENERAL_select_wire),
+// 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_INITReg_JUG_7),
+// 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_GO_Reg_JUG_7),
+// 	.CC_MUX16X1_data3_InBUS(DATA_FIXED_L1_Reg_JUG_7),
+// 	.CC_MUX16X1_data4_InBUS(),
+// 	.CC_MUX16X1_data5_InBUS(),
+// 	.CC_MUX16X1_data6_InBUS(),
+// 	.CC_MUX16X1_data7_InBUS(),
+// 	.CC_MUX16X1_data8_InBUS(),
+// 	.CC_MUX16X1_data9_InBUS(),
+// 	.CC_MUX16X1_data10_InBUS(),
+// 	.CC_MUX16X1_z_Out()
+// );
 
-CC_MUX16X1 CC_MUX16X1_u6 (
-	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_6),
-	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_6),
-	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_6),
-	.CC_MUX16X1_data3_InBUS,
-	.CC_MUX16X1_data4_InBUS,
-	.CC_MUX16X1_data5_InBUS,
-	.CC_MUX16X1_data6_InBUS,
-	.CC_MUX16X1_data7_InBUS,
-	.CC_MUX16X1_data8_InBUS,
-	.CC_MUX16X1_z_Out
-);
+// CC_MUX16X1 CC_MUX16X1_u6 (
+// 	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_6),
+// 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_6),
+// 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_6),
+// 	.CC_MUX16X1_data3_InBUS,
+// 	.CC_MUX16X1_data4_InBUS,
+// 	.CC_MUX16X1_data5_InBUS,
+// 	.CC_MUX16X1_data6_InBUS,
+// 	.CC_MUX16X1_data7_InBUS,
+// 	.CC_MUX16X1_data8_InBUS,
+// 	.CC_MUX16X1_z_Out
+// );
 
-CC_MUX16X1 CC_MUX16X1_u5 (
-	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_5),
-	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_5),
-	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_5),
-	.CC_MUX16X1_data3_InBUS,
-	.CC_MUX16X1_data4_InBUS,
-	.CC_MUX16X1_data5_InBUS,
-	.CC_MUX16X1_data6_InBUS,
-	.CC_MUX16X1_data7_InBUS,
-	.CC_MUX16X1_data8_InBUS,
-	.CC_MUX16X1_z_Out
-);
+// CC_MUX16X1 CC_MUX16X1_u5 (
+// 	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_5),
+// 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_5),
+// 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_5),
+// 	.CC_MUX16X1_data3_InBUS,
+// 	.CC_MUX16X1_data4_InBUS,
+// 	.CC_MUX16X1_data5_InBUS,
+// 	.CC_MUX16X1_data6_InBUS,
+// 	.CC_MUX16X1_data7_InBUS,
+// 	.CC_MUX16X1_data8_InBUS,
+// 	.CC_MUX16X1_z_Out
+// );
 
-CC_MUX16X1 CC_MUX16X1_u4 (
-	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_4),
-	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_4),
-	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_4),
-	.CC_MUX16X1_data3_InBUS,
-	.CC_MUX16X1_data4_InBUS,
-	.CC_MUX16X1_data5_InBUS,
-	.CC_MUX16X1_data6_InBUS,
-	.CC_MUX16X1_data7_InBUS,
-	.CC_MUX16X1_data8_InBUS,
-	.CC_MUX16X1_z_Out
-);
+// CC_MUX16X1 CC_MUX16X1_u4 (
+// 	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_4),
+// 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_4),
+// 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_4),
+// 	.CC_MUX16X1_data3_InBUS,
+// 	.CC_MUX16X1_data4_InBUS,
+// 	.CC_MUX16X1_data5_InBUS,
+// 	.CC_MUX16X1_data6_InBUS,
+// 	.CC_MUX16X1_data7_InBUS,
+// 	.CC_MUX16X1_data8_InBUS,
+// 	.CC_MUX16X1_z_Out
+// );
 
-CC_MUX16X1 CC_MUX16X1_u3 (
-	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_3),
-	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_3),
-	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_3),
-	.CC_MUX16X1_data3_InBUS,
-	.CC_MUX16X1_data4_InBUS,
-	.CC_MUX16X1_data5_InBUS,
-	.CC_MUX16X1_data6_InBUS,
-	.CC_MUX16X1_data7_InBUS,
-	.CC_MUX16X1_data8_InBUS,
-	.CC_MUX16X1_z_Out
-);
+// CC_MUX16X1 CC_MUX16X1_u3 (
+// 	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_3),
+// 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_3),
+// 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_3),
+// 	.CC_MUX16X1_data3_InBUS,
+// 	.CC_MUX16X1_data4_InBUS,
+// 	.CC_MUX16X1_data5_InBUS,
+// 	.CC_MUX16X1_data6_InBUS,
+// 	.CC_MUX16X1_data7_InBUS,
+// 	.CC_MUX16X1_data8_InBUS,
+// 	.CC_MUX16X1_z_Out
+// );
 
-CC_MUX16X1 CC_MUX16X1_u2 (
-	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_2),
-	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_2),
-	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_2),
-	.CC_MUX16X1_data3_InBUS,
-	.CC_MUX16X1_data4_InBUS,
-	.CC_MUX16X1_data5_InBUS,
-	.CC_MUX16X1_data6_InBUS,
-	.CC_MUX16X1_data7_InBUS,
-	.CC_MUX16X1_data8_InBUS,
-	.CC_MUX16X1_z_Out
-);
+// CC_MUX16X1 CC_MUX16X1_u2 (
+// 	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_2),
+// 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_2),
+// 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_2),
+// 	.CC_MUX16X1_data3_InBUS,
+// 	.CC_MUX16X1_data4_InBUS,
+// 	.CC_MUX16X1_data5_InBUS,
+// 	.CC_MUX16X1_data6_InBUS,
+// 	.CC_MUX16X1_data7_InBUS,
+// 	.CC_MUX16X1_data8_InBUS,
+// 	.CC_MUX16X1_z_Out
+// );
 
-CC_MUX16X1 CC_MUX16X1_u1 (
-	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_1),
-	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_1),
-	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_1),
-	.CC_MUX16X1_data3_InBUS,
-	.CC_MUX16X1_data4_InBUS,
-	.CC_MUX16X1_data5_InBUS,
-	.CC_MUX16X1_data6_InBUS,
-	.CC_MUX16X1_data7_InBUS,
-	.CC_MUX16X1_data8_InBUS,
-	.CC_MUX16X1_z_Out
-);
+// CC_MUX16X1 CC_MUX16X1_u1 (
+// 	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_1),
+// 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_1),
+// 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_1),
+// 	.CC_MUX16X1_data3_InBUS,
+// 	.CC_MUX16X1_data4_InBUS,
+// 	.CC_MUX16X1_data5_InBUS,
+// 	.CC_MUX16X1_data6_InBUS,
+// 	.CC_MUX16X1_data7_InBUS,
+// 	.CC_MUX16X1_data8_InBUS,
+// 	.CC_MUX16X1_z_Out
+// );
 
-CC_MUX16X1 CC_MUX16X1_u0 (
-	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_0),
-	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_0),
-	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_0),
-	.CC_MUX16X1_data3_InBUS,
-	.CC_MUX16X1_data4_InBUS,
-	.CC_MUX16X1_data5_InBUS,
-	.CC_MUX16X1_data6_InBUS,
-	.CC_MUX16X1_data7_InBUS,
-	.CC_MUX16X1_data8_InBUS,
-	.CC_MUX16X1_z_Out
-);
+// CC_MUX16X1 CC_MUX16X1_u0 (
+// 	.CC_MUX16X1_select_InBUS(DATA_FIXED_INITReg_JUG_0),
+// 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_GO_Reg_JUG_0),
+// 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_L1_Reg_JUG_0),
+// 	.CC_MUX16X1_data3_InBUS,
+// 	.CC_MUX16X1_data4_InBUS,
+// 	.CC_MUX16X1_data5_InBUS,
+// 	.CC_MUX16X1_data6_InBUS,
+// 	.CC_MUX16X1_data7_InBUS,
+// 	.CC_MUX16X1_data8_InBUS,
+// 	.CC_MUX16X1_z_Out
+// );
 
 
 //######################################################################
@@ -520,7 +520,7 @@ assign regGAME_data3_wire = SC_Reg_MATRIX_u3;
 assign regGAME_data4_wire = SC_Reg_MATRIX_u4;
 assign regGAME_data5_wire = SC_Reg_MATRIX_u5;
 assign regGAME_data6_wire = SC_Reg_MATRIX_u6;
-assign regGAME_data7_wire = SC_Reg_MATRIX_u7;
+assign regGAME_data7_wire = SC_REG_JUG_u1;
 
 assign data_max =(add==3'b000)?{regGAME_data0_wire[7],regGAME_data1_wire[7],regGAME_data2_wire[7],regGAME_data3_wire[7],regGAME_data4_wire[7],regGAME_data5_wire[7],regGAME_data6_wire[7],regGAME_data7_wire[7]}:
 	       (add==3'b001)?{regGAME_data0_wire[6],regGAME_data1_wire[6],regGAME_data2_wire[6],regGAME_data3_wire[6],regGAME_data4_wire[6],regGAME_data5_wire[6],regGAME_data6_wire[6],regGAME_data7_wire[6]}:
