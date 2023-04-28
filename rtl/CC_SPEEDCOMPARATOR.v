@@ -18,7 +18,7 @@
 //=======================================================
 //  MODULE Definition
 //=======================================================
-module CC_SPEEDCOMPARATOR #(parameter SPEEDCOMPARATOR_DATAWIDTH=8)(
+module CC_SPEEDCOMPARATOR #(parameter SPEEDCOMPARATOR_DATAWIDTH=28)(
 //////////// OUTPUTS //////////
 	CC_SPEEDCOMPARATOR_signal_OutLow,
 //////////// INPUTS //////////
