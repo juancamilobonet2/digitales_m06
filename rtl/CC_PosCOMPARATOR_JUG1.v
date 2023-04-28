@@ -33,11 +33,10 @@ module CC_PosCOMPARATOR_JUG1 #(parameter PosCOMPARATOR_DATAWIDTH=8)(
 //=======================================================
 //  PORT declarations
 //=======================================================
-output	reg 	CC_PosCOMPARATOR_JUG1_fila0_Out;
-output	reg 	CC_PosCOMPARATOR_JUG1_posjug1_Out;
+output	reg 	CC_PosCOMPARATOR_JUG1_OutBUS;
 
-input 	[PosCOMPARATOR_JUG1_DATAWIDTH-1:0] CC_PosCOMPARATOR_JUG1_fila0;
-input 	[PosCOMPARATOR_JUG1_DATAWIDTH-1:0] CC_PosCOMPARATOR_JUG1_posjug1;
+input 	[PosCOMPARATOR_DATAWIDTH-1:0] CC_PosCOMPARATOR_JUG1_fila0;
+input 	[PosCOMPARATOR_DATAWIDTH-1:0] CC_PosCOMPARATOR_JUG1_posjug1;
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================

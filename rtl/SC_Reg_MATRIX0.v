@@ -1,4 +1,4 @@
-module SC_MATRIX0 #(parameter Reg_MATRIX0_DATAWIDTH=8, parameter DATA_FIXED_INITREGMATRIX=8'b00000000)(
+module SC_Reg_MATRIX0 #(parameter Reg_MATRIX0_DATAWIDTH=8, parameter DATA_FIXED_INITREGMATRIX=8'b00000000)(
 	//////////// OUTPUTS //////////
 	SC_MATRIX0_OR1_OutBUS,
     SC_MATRIX0_OR2_OutBUS,
@@ -22,23 +22,23 @@ module SC_MATRIX0 #(parameter Reg_MATRIX0_DATAWIDTH=8, parameter DATA_FIXED_INIT
 //=======================================================
 //  PORT declarations
 //=======================================================
-output		[MATRIX0_DATAWIDTH-1:0]	SC_MATRIX0_OR1_OutBUS;
-output		[MATRIX0_DATAWIDTH-1:0]	SC_MATRIX0_OR2_OutBUS;
-output		[MATRIX0_DATAWIDTH-1:0]	SC_MATRIX0_COMPARATOR1_OutBUS;
-output		[MATRIX0_DATAWIDTH-1:0]	SC_MATRIX0_COMPARATOR2_OutBUS;
-output		[MATRIX0_DATAWIDTH-1:0]	SC_MATRIX0_MUX21_OutBUS;
+output		[Reg_MATRIX0_DATAWIDTH-1:0]	SC_MATRIX0_OR1_OutBUS;
+output		[Reg_MATRIX0_DATAWIDTH-1:0]	SC_MATRIX0_OR2_OutBUS;
+output		[Reg_MATRIX0_DATAWIDTH-1:0]	SC_MATRIX0_COMPARATOR1_OutBUS;
+output		[Reg_MATRIX0_DATAWIDTH-1:0]	SC_MATRIX0_COMPARATOR2_OutBUS;
+output		[Reg_MATRIX0_DATAWIDTH-1:0]	SC_MATRIX0_MUX21_OutBUS;
 
 input		SC_MATRIX0_CLOCK_50;
 input		SC_MATRIX0_RESET_InHigh;
 input		SC_MATRIX0_clear_InLow;
 input		SC_MATRIX0_load0_InLow;	
-input		[MATRIX0_DATAWIDTH-1:0]	SC_MATRIX0_data0_InBUS;
-\
+input		[Reg_MATRIX0_DATAWIDTH-1:0]	SC_MATRIX0_data0_InBUS;
+
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
-reg [MATRIX0_DATAWIDTH-1:0] MATRIX0_Register;
-reg [MATRIX0_DATAWIDTH-1:0] MATRIX0_Signal;
+reg [Reg_MATRIX0_DATAWIDTH-1:0] MATRIX0_Register;
+reg [Reg_MATRIX0_DATAWIDTH-1:0] MATRIX0_Signal;
 //=======================================================
 //  Structural coding
 //=======================================================

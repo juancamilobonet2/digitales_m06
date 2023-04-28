@@ -28,13 +28,13 @@ module CC_SIDECOMPARATOR_JUG2 #(parameter SIDECOMPARATOR_DATAWIDTH=8)(
 //=======================================================
 //  PARAMETER declarations
 //=======================================================
-
+//parameter SIDECOMPARATOR_DATAWIDTH;
 //=======================================================
 //  PORT declarations
 //=======================================================
 output	reg CC_SIDECOMPARATOR_JUG2_derecha_OutLow;
 output	reg CC_SIDECOMPARATOR_JUG2_izquierda_OutLow;
-input 	[SIDECOMPARATOR_JUG_DATAWIDTH-1:0] CC_SIDECOMPARATOR_JUG2_data_InBUS;
+input 	[SIDECOMPARATOR_DATAWIDTH-1:0] CC_SIDECOMPARATOR_JUG2_data_InBUS;
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================

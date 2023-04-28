@@ -34,7 +34,7 @@ module CC_SIDECOMPARATOR_JUG1 #(parameter SIDECOMPARATOR_DATAWIDTH=8)(
 //=======================================================
 output	reg CC_SIDECOMPARATOR_JUG1_derecha_OutLow;
 output	reg CC_SIDECOMPARATOR_JUG1_izquierda_OutLow;
-input 	[SIDECOMPARATOR_JUG_DATAWIDTH-1:0] CC_SIDECOMPARATOR_JUG1_data_InBUS;
+input 	[SIDECOMPARATOR_DATAWIDTH-1:0] CC_SIDECOMPARATOR_JUG1_data_InBUS;
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================

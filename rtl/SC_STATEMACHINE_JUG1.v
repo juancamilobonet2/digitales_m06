@@ -28,7 +28,7 @@ module SC_STATEMACHINE_JUG1 (
 	SC_STATEMACHINE_JUG1_startButton_InLow,
 	SC_STATEMACHINE_JUG1_leftButton_InLow,
 	SC_STATEMACHINE_JUG1_rightButton_InLow,
-	SC_STATEMACHINE_JUG1_izuqierdacomparator_InLow,
+	SC_STATEMACHINE_JUG1_izquierdacomparator_InLow,
 	SC_STATEMACHINE_JUG1_derechacomparator_InLow
 );	
 //=======================================================

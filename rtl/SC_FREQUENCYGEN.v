@@ -18,13 +18,11 @@
 //=======================================================
 //  MODULE Definition
 //=======================================================
-module CC_PosCOMPARATOR_JUG2 #(parameter PosCOMPARATOR_DATAWIDTH=8)(
-//////////// OUTPUTS //////////
-	CC_PosCOMPARATOR_JUG2_OutBUS,
-//////////// INPUTS //////////
-	CC_PosCOMPARATOR_JUG2_fila0,
-	CC_PosCOMPARATOR_JUG2_posjug2
-	
+module SC_SPEEDCOUNTER #(parameter SPEEDCOUNTER_DATAWIDTH=28, parameter FREQUENCY = 440)(
+	//////////// OUTPUTS //////////
+	SC_SPEEDCOUNTER_signal_OutHigh,
+	//////////// INPUTS //////////
+	SC_SPEEDCOUNTER_CLOCK_50
 );
 //=======================================================
 //  PARAMETER declarations
@@ -33,23 +31,31 @@ module CC_PosCOMPARATOR_JUG2 #(parameter PosCOMPARATOR_DATAWIDTH=8)(
 //=======================================================
 //  PORT declarations
 //=======================================================
-output	reg 	CC_PosCOMPARATOR_JUG2_OutBUS;
-input 	[PosCOMPARATOR_DATAWIDTH-1:0] CC_PosCOMPARATOR_JUG2_fila0;
-input 	[PosCOMPARATOR_DATAWIDTH-1:0] CC_PosCOMPARATOR_JUG2_posjug2;
+output 		SC_SPEEDCOUNTER_signal_OutHigh;
+input		SC_SPEEDCOUNTER_CLOCK_50;
+
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
+reg [upSPEEDCOUNTER_DATAWIDTH-1:0] SPEEDCOUNTER_Register;
+reg [upSPEEDCOUNTER_DATAWIDTH-1:0] SPEEDCOUNTER_Signal;
 //=======================================================
 //  Structural coding
 //=======================================================
-always @(CC_PosCOMPARATOR_JUG2_fila0, CC_PosCOMPARATOR_JUG2_posjug2)
+//INPUT LOGIC: COMBINATIONAL
+always @(*)
 begin
-	if( CC_PosCOMPARATOR_JUG2_fila0 ==CC_PosCOMPARATOR_JUG2_posjug2)
-		CC_PosCOMPARATOR_JUG2_OutBUS = 1'b1;
-	else 
-		CC_PosCOMPARATOR_JUG2_OutBUS = 1'b0;
+end	
+//STATE REGISTER: SEQUENTIAL
+always @(posedge SC_SPEEDCOUNTER_CLOCK_50) 
+begin
+	SPEEDCOUNTER_Register <= SPEEDCOUNTER_Register + 1'b1;
 
-	
 end
+//=======================================================
+//  Outputs
+//=======================================================
+//OUTPUT LOGIC: COMBINATIONAL
+assign SC_SPEEDCOUNTER_data_OutBUS = SPEEDCOUNTER_Register;
 
 endmodule
