@@ -32,7 +32,7 @@ input 	[NUMBER_DATAWIDTH-1:0] SC_MUX81_data7_InBUS;
 input 	[NUMBER_DATAWIDTH-1:0] SC_MUX81_data8_InBUS;
 input 	[NUMBER_DATAWIDTH-1:0] SC_MUX81_data9_InBUS;
 input 	[NUMBER_DATAWIDTH-1:0] SC_MUX81_data10_InBUS;
-input 	[2:0] SC_MUX81_select_InBUS;
+input 	[3:0] SC_MUX81_select_InBUS;
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
