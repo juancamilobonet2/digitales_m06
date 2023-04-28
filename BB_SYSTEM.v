@@ -92,32 +92,32 @@ module BB_SYSTEM (
  parameter DATA_FIXED_L3_Reg_JUG_1 = 8'b00100100;
  parameter DATA_FIXED_L3_Reg_JUG_0 = 8'b00011000;
 // Pantalla Vivo/Muerto
- parameter DATA_FIXED_VM_Reg_JUG_7 = 8'b00001111
- parameter DATA_FIXED_VM_Reg_JUG_6 = 8'b01101111
- parameter DATA_FIXED_VM_Reg_JUG_5 = 8'b00001111
- parameter DATA_FIXED_VM_Reg_JUG_4 = 8'b10011111
- parameter DATA_FIXED_VM_Reg_JUG_3 = 8'b01101111
- parameter DATA_FIXED_VM_Reg_JUG_2 = 8'b00001111
- parameter DATA_FIXED_VM_Reg_JUG_1 = 8'b00001111
- parameter DATA_FIXED_VM_Reg_JUG_0 = 8'b00001111
+ parameter DATA_FIXED_VM_Reg_JUG_7 = 8'b00001111;
+ parameter DATA_FIXED_VM_Reg_JUG_6 = 8'b01101111;
+ parameter DATA_FIXED_VM_Reg_JUG_5 = 8'b00001111;
+ parameter DATA_FIXED_VM_Reg_JUG_4 = 8'b10011111;
+ parameter DATA_FIXED_VM_Reg_JUG_3 = 8'b01101111;
+ parameter DATA_FIXED_VM_Reg_JUG_2 = 8'b00001111;
+ parameter DATA_FIXED_VM_Reg_JUG_1 = 8'b00001111;
+ parameter DATA_FIXED_VM_Reg_JUG_0 = 8'b00001111;
 // Pantalla Muerto/Vivo
- parameter DATA_FIXED_MV_Reg_JUG_7 = 8'b11110000
- parameter DATA_FIXED_MV_Reg_JUG_6 = 8'b11110110
- parameter DATA_FIXED_MV_Reg_JUG_5 = 8'b11110000
- parameter DATA_FIXED_MV_Reg_JUG_4 = 8'b11111001
- parameter DATA_FIXED_MV_Reg_JUG_3 = 8'b11110110
- parameter DATA_FIXED_MV_Reg_JUG_2 = 8'b11110000
- parameter DATA_FIXED_MV_Reg_JUG_1 = 8'b11110000
- parameter DATA_FIXED_MV_Reg_JUG_0 = 8'b11110000
+ parameter DATA_FIXED_MV_Reg_JUG_7 = 8'b11110000;
+ parameter DATA_FIXED_MV_Reg_JUG_6 = 8'b11110110;
+ parameter DATA_FIXED_MV_Reg_JUG_5 = 8'b11110000;
+ parameter DATA_FIXED_MV_Reg_JUG_4 = 8'b11111001;
+ parameter DATA_FIXED_MV_Reg_JUG_3 = 8'b11110110;
+ parameter DATA_FIXED_MV_Reg_JUG_2 = 8'b11110000;
+ parameter DATA_FIXED_MV_Reg_JUG_1 = 8'b11110000;
+ parameter DATA_FIXED_MV_Reg_JUG_0 = 8'b11110000;
  // Pantalla Vivo/Vivo
- parameter DATA_FIXED_GANADOR_Reg_JUG_7 = 8'b00000000
- parameter DATA_FIXED_GANADOR_Reg_JUG_6 = 8'b00100100
- parameter DATA_FIXED_GANADOR_Reg_JUG_5 = 8'b00100100
- parameter DATA_FIXED_GANADOR_Reg_JUG_4 = 8'b00000000
- parameter DATA_FIXED_GANADOR_Reg_JUG_3 = 8'b01000010
- parameter DATA_FIXED_GANADOR_Reg_JUG_2 = 8'b00100100
- parameter DATA_FIXED_GANADOR_Reg_JUG_1 = 8'b00111100
- parameter DATA_FIXED_GANADOR_Reg_JUG_0 = 8'b00000000
+ parameter DATA_FIXED_GANADOR_Reg_JUG_7 = 8'b00000000;
+ parameter DATA_FIXED_GANADOR_Reg_JUG_6 = 8'b00100100;
+ parameter DATA_FIXED_GANADOR_Reg_JUG_5 = 8'b00100100;
+ parameter DATA_FIXED_GANADOR_Reg_JUG_4 = 8'b00000000;
+ parameter DATA_FIXED_GANADOR_Reg_JUG_3 = 8'b01000010;
+ parameter DATA_FIXED_GANADOR_Reg_JUG_2 = 8'b00100100;
+ parameter DATA_FIXED_GANADOR_Reg_JUG_1 = 8'b00111100;
+ parameter DATA_FIXED_GANADOR_Reg_JUG_0 = 8'b00000000;
 
 
  //=======================================================
