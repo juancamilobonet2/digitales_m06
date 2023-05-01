@@ -41,8 +41,8 @@ input		SC_SPEEDCOUNTER_upcount_InLow;
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
-reg [upSPEEDCOUNTER_DATAWIDTH-1:0] SPEEDCOUNTER_Register;
-reg [upSPEEDCOUNTER_DATAWIDTH-1:0] SPEEDCOUNTER_Signal;
+reg [SPEEDCOUNTER_DATAWIDTH-1:0] SPEEDCOUNTER_Register;
+reg [SPEEDCOUNTER_DATAWIDTH-1:0] SPEEDCOUNTER_Signal;
 //=======================================================
 //  Structural coding
 //=======================================================

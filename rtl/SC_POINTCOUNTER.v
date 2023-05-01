@@ -41,8 +41,8 @@ input		SC_POINTCOUNTER_upcount_InLow;
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
-reg [upPOINTCOUNTER_DATAWIDTH-1:0] POINTCOUNTER_Register;
-reg [upPOINTCOUNTER_DATAWIDTH-1:0] POINTCOUNTER_Signal;
+reg [POINTCOUNTER_DATAWIDTH-1:0] POINTCOUNTER_Register;
+reg [POINTCOUNTER_DATAWIDTH-1:0] POINTCOUNTER_Signal;
 //=======================================================
 //  Structural coding
 //=======================================================

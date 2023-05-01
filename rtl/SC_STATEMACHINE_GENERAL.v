@@ -64,27 +64,27 @@ localparam STATE_setSpeed_n2									= 9;
 localparam STATE_NIVEL_3										= 10;
 localparam STATE_esperarNIVEL_3								= 11;
 localparam STATE_setSpeed_n3									= 12;
-localparam STATE_lose_j1										= 13;
-localparam STATE_esperarLose_j1								= 14;
-localparam STATE_lose_j2										= 15;
-localparam STATE_esperarLose_j2								= 16;
+localparam STATE_lose_jug1										= 13;
+localparam STATE_esperarLose_jug1								= 14;
+localparam STATE_lose_jug2										= 15;
+localparam STATE_esperarLose_jug2								= 16;
 localparam STATE_sumarCarros_0								= 17;
 localparam STATE_moverCarros_0								= 18;
 localparam STATE_esperar_0										= 19;
 localparam STATE_esperar_1										= 20;
-localparam STATE_fin 											= 21;
+localparam STATE_FIN												= 21;
 
 //=======================================================
 //  PORT declarations
 //=======================================================
-output			SC_STATEMACHINE_GENERAL_clear_OutLow;
-output			SC_STATEMACHINE_GENERAL_load0_OutLow;
-output			SC_STATEMACHINE_GENERAL_random_OutLow;
-output 			SC_STATEMACHINE_GENERAL_speedCounter_OutLow;
-output 			SC_STATEMACHINE_GENERAL_speedCompLoad_OutLow;
-output			SC_STATEMACHINE_GENERAL_speedReset_OutHigh;
+output reg		SC_STATEMACHINE_GENERAL_clear_OutLow;
+output reg		SC_STATEMACHINE_GENERAL_load0_OutLow;
+output reg		SC_STATEMACHINE_GENERAL_random_OutLow;
+output reg		SC_STATEMACHINE_GENERAL_speedCounter_OutLow;
+output reg		SC_STATEMACHINE_GENERAL_speedCompLoad_OutLow;
+output reg		SC_STATEMACHINE_GENERAL_speedReset_OutHigh;
 
-output			SC_STATEMACHINE_GENERAL_pointSignal_OutLow;
+output reg		SC_STATEMACHINE_GENERAL_pointSignal_OutLow;
 output reg		[27:0] SC_STATEMACHINE_GENERAL_speedComparator_OutBUS;
 
 output reg		[3:0] SC_STATEMACHINE_GENERAL_mux0_OutBUS;
@@ -96,14 +96,15 @@ output reg		[4:0] SC_STATEMACHINE_GENERAL_STATE_OutBUS;
 
 
 input			SC_STATEMACHINE_GENERAL_CLOCK_50;
-input 			SC_STATEMACHINE_GENERAL_RESET_InHigh;
+input 		SC_STATEMACHINE_GENERAL_RESET_InHigh;
 input			SC_STATEMACHINE_GENERAL_startButton_InLow;
-input			SC_STATEMACHINE_JUG1_ready_InLow;
-input			SC_STATEMACHINE_JUG2_ready_InLow;
+//input			SC_STATEMACHINE_JUG1_ready_InLow;
+//inp	SC_STATEMACHINE_JUG2_ready_InLow;
 input			SC_STATEMACHINE_GENERAL_speedComparator_InLow;
 input			SC_STATEMACHINE_GENERAL_posJug1_InLow;
 input			SC_STATEMACHINE_GENERAL_posJug2_InLow;
-input 			[7:0] SC_STATEMACHINE_GENERAL_pointCounter_InBUS;
+input			SC_STATEMACHINE_GENERAL_timer_InLow;
+input 		[7:0] SC_STATEMACHINE_GENERAL_pointCounter_InBUS;
 
 //=======================================================
 //  REG/WIRE declarations
@@ -149,16 +150,16 @@ begin
 									STATE_Signal = STATE_esperarNIVEL_3;
 		STATE_setSpeed_n3:				STATE_Signal = STATE_sumarCarros_0;
 
-		STATE_lose_j1:		STATE_Signal = STATE_esperarLose_j1;	
-		STATE_esperarLose_j1:	if (SC_STATEMACHINE_GENERAL_speedComparator_InLow == 1'b0) 
+		STATE_lose_jug1:		STATE_Signal = STATE_esperarLose_jug1;	
+		STATE_esperarLose_jug1:	if (SC_STATEMACHINE_GENERAL_speedComparator_InLow == 1'b0) 
 									STATE_Signal = STATE_START_0;
 								else 
-									STATE_Signal = STATE_lose_j1;
-		STATE_lose_j2:		STATE_Signal = STATE_esperarLose_j2;	
-		STATE_esperarLose_j2:	if (SC_STATEMACHINE_GENERAL_speedComparator_InLow == 1'b0) 
+									STATE_Signal = STATE_lose_jug1;
+		STATE_lose_jug2:		STATE_Signal = STATE_esperarLose_jug2;	
+		STATE_esperarLose_jug2:	if (SC_STATEMACHINE_GENERAL_speedComparator_InLow == 1'b0) 
 									STATE_Signal = STATE_START_0;
 								else 
-									STATE_Signal = STATE_lose_j2;
+									STATE_Signal = STATE_lose_jug2;
 
 		STATE_moverCarros_0: STATE_Signal = STATE_esperar_1;
 		STATE_sumarCarros_0: STATE_Signal = STATE_esperar_0;
@@ -568,7 +569,9 @@ begin
 			SC_STATEMACHINE_GENERAL_random_OutLow			= 1'b1;
 		end
 	endcase
+	
 end
 
-assign SC_STATEMACHINE_GENERAL_STATE_OutBUS = STATE_Register;
+//assign SC_STATEMACHINE_GENERAL_STATE_OutBUS = STATE_Register;
+
 endmodule

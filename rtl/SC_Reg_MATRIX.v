@@ -9,7 +9,7 @@ module SC_Reg_MATRIX #(parameter Reg_MATRIX_DATAWIDTH=8, parameter DATA_FIXED_IN
 	SC_Reg_MATRIX_load0_InLow, 
 	//SC_Reg_MATRIX_load1_InLow, 
 	//SC_Reg_MATRIX_shiftselection_In,
-	SC_Reg_MATRIX_data0_InBUS,
+	SC_Reg_MATRIX_data0_InBUS
     //Este no es necesario pq solo le entran datos del mux
 	//SC_Reg_MATRIX_data1_InBUS
 );

@@ -36,7 +36,7 @@ module SC_COUNTER #(parameter COUNTER_DATAWIDTH=8)(
 //=======================================================
 //  PORT declarations
 //=======================================================
-output		SC_COUNTER_signal_OutLow;
+output reg		SC_COUNTER_signal_OutLow;
 input		SC_COUNTER_CLOCK_50;
 input		SC_COUNTER_RESET_InHigh;
 input		SC_COUNTER_LOAD_InLow;	

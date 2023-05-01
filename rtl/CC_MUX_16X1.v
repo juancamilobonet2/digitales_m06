@@ -12,7 +12,7 @@ module CC_MUX16X1 (
 	CC_MUX16X1_data7_InBUS,
 	CC_MUX16X1_data8_InBUS,
    CC_MUX16X1_data9_InBUS,
-   CC_MUX16X1_data10_InBUS,
+   CC_MUX16X1_data10_InBUS
 );
 //=======================================================
 //  PARAMETER declarations
