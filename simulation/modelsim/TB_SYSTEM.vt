@@ -86,20 +86,18 @@ initial begin
 // code executes for every event on sensitivity list   
 // insert code here --> begin     
 	random1 <= $random;
-	#0 			TB_SYSTEM_RESET_InHigh <= 1'b1; TB_SYSTEM_startButton_InLow <= 1'b0; TB_SYSTEM_leftButton_InLow <= 1'b0; TB_SYSTEM_rightButton_InLow <= 1'b0;
-	#10000000 	TB_SYSTEM_RESET_InHigh <= 1'b0; TB_SYSTEM_startButton_InLow <= 1'b0; TB_SYSTEM_leftButton_InLow <= 1'b0; TB_SYSTEM_rightButton_InLow <= 1'b0;
-
-	#10000000 	TB_SYSTEM_RESET_InHigh <= 1'b0; TB_SYSTEM_startButton_InLow <= 1'b1; TB_SYSTEM_leftButton_InLow <= 1'b0; TB_SYSTEM_rightButton_InLow <= 1'b0;
-	#10000000 	TB_SYSTEM_RESET_InHigh <= 1'b0; TB_SYSTEM_startButton_InLow <= 1'b0; TB_SYSTEM_leftButton_InLow <= 1'b0; TB_SYSTEM_rightButton_InLow <= 1'b0;
-
-	#10000000 	TB_SYSTEM_RESET_InHigh <= 1'b0; TB_SYSTEM_startButton_InLow <= 1'b0; TB_SYSTEM_leftButton_InLow <= 1'b1; TB_SYSTEM_rightButton_InLow <= 1'b0;
-	#10000000 	TB_SYSTEM_RESET_InHigh <= 1'b0; TB_SYSTEM_startButton_InLow <= 1'b0; TB_SYSTEM_leftButton_InLow <= 1'b1; TB_SYSTEM_rightButton_InLow <= 1'b0;
-
-	#10000000 	TB_SYSTEM_RESET_InHigh <= 1'b0; TB_SYSTEM_startButton_InLow <= 1'b0; TB_SYSTEM_leftButton_InLow <= 1'b0; TB_SYSTEM_rightButton_InLow <= 1'b1;
-	#10000000 	TB_SYSTEM_RESET_InHigh <= 1'b0; TB_SYSTEM_startButton_InLow <= 1'b0; TB_SYSTEM_leftButton_InLow <= 1'b0; TB_SYSTEM_rightButton_InLow <= 1'b1;
 	
-	#10000000 	TB_SYSTEM_RESET_InHigh <= 1'b0; TB_SYSTEM_startButton_InLow <= 1'b0; TB_SYSTEM_leftButton_InLow <= 1'b0; TB_SYSTEM_rightButton_InLow <= 1'b0;
-	#10000000 	TB_SYSTEM_RESET_InHigh <= 1'b0; TB_SYSTEM_startButton_InLow <= 1'b0; TB_SYSTEM_leftButton_InLow <= 1'b0; TB_SYSTEM_rightButton_InLow <= 1'b0;
+	//Se hace reset
+	#0 			TB_SYSTEM_RESET_InHigh <= 1'b1; TB_SYSTEM_startButton_InLow <= 1'b0; TB_SYSTEM_leftButton_InLow <= 1'b1; TB_SYSTEM_rightButton_InLow <= 1'b1;
+	//Deberia ir al estado start con la pantalla de start, hasta que se presione el boton start
+
+	//Se presiona el boton de start. 
+	#1000000000 	TB_SYSTEM_RESET_InHigh <= 1'b0; TB_SYSTEM_startButton_InLow <= 1'b1; TB_SYSTEM_leftButton_InLow <= 1'b1; TB_SYSTEM_rightButton_InLow <= 1'b1;
+	//Al presionar el boton de start, deberia ir a estado GO
+	
+	//Se presiona el boton de start. 
+	#3000000000 	TB_SYSTEM_RESET_InHigh <= 1'b0; TB_SYSTEM_startButton_InLow <= 1'b1; TB_SYSTEM_leftButton_InLow <= 1'b1; TB_SYSTEM_rightButton_InLow <= 1'b1;
+	//Al presionar el boton de start, deberia ir a estado GO
 	
 	
 	//#(TCK*10000) $finish;	
