@@ -26,22 +26,35 @@ add wave -noupdate /TB_SYSTEM/TB_SYSTEM_max7219DIN_Out
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_max7219NCS_Out
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_max7219CLK_Out
 
-add wave  -divider SC_DEBOUNCE1_u0
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_DEBOUNCE1_u0/SC_DEBOUNCE1_button_In
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_DEBOUNCE1_u0/SC_DEBOUNCE1_button_Out
+#add wave  -divider SC_DEBOUNCE1_u0
+#add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_DEBOUNCE1_u0/SC_DEBOUNCE1_button_In
+#add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_DEBOUNCE1_u0/SC_DEBOUNCE1_button_Out
+#
+#add wave  -divider SC_DEBOUNCE1_u1
+#add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_DEBOUNCE1_u1/SC_DEBOUNCE1_button_In
+#add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_DEBOUNCE1_u1/SC_DEBOUNCE1_button_Out
+#
+#add wave  -divider SC_DEBOUNCE1_u2
+#add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_DEBOUNCE1_u2/SC_DEBOUNCE1_button_In
+#add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_DEBOUNCE1_u2/SC_DEBOUNCE1_button_Out
+#
+#add wave  -divider TEST
+#add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/matrix_ctrl_unit_0/clk_driverS
+#add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/matrix_ctrl_unit_0/Trig_SignalNEG
+#add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/matrix_ctrl_unit_0/Trig_SignalPOS
 
-add wave  -divider SC_DEBOUNCE1_u1
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_DEBOUNCE1_u1/SC_DEBOUNCE1_button_In
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_DEBOUNCE1_u1/SC_DEBOUNCE1_button_Out
+add wave  -divider SC_Reg_MATRIX_u7
 
-add wave  -divider SC_DEBOUNCE1_u2
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_DEBOUNCE1_u2/SC_DEBOUNCE1_button_In
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_DEBOUNCE1_u2/SC_DEBOUNCE1_button_Out
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u7/CC_MUX16X1_z_Out
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u6/CC_MUX16X1_z_Out
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u5/CC_MUX16X1_z_Out
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u4/CC_MUX16X1_z_Out
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u3/CC_MUX16X1_z_Out
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u2/CC_MUX16X1_z_Out
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u1/CC_MUX16X1_z_Out
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX21_u1/CC_MUX_21_z_Out
 
-add wave  -divider TEST
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/matrix_ctrl_unit_0/clk_driver
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/matrix_ctrl_unit_0/Trig_SignalNEG
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/matrix_ctrl_unit_0/Trig_SignalPOS
+
 
 restart
 run 500ms

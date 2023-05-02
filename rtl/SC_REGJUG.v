@@ -1,4 +1,4 @@
-module SC_REGJUG #(parameter REGJUG_DATAWIDTH=8, parameter DATA_FIXED_INITREGJUG=8'b00000000, parameter DATA_INIT_POS=8'b01000100)(
+module SC_REGJUG #(parameter REGJUG_DATAWIDTH=8, parameter DATA_FIXED_INITREGJUG=8'b00000000, parameter DATA_INIT_POS=8'b01000000)(
 	//////////// OUTPUTS //////////
 	SC_REGJUG_data_OutBUS,
 	//////////// INPUTS //////////
@@ -33,9 +33,9 @@ reg [REGJUG_DATAWIDTH-1:0] REGJUG_Signal;
 always @(*)
 begin
 	if (SC_REGJUG_clear_InLow == 1'b0)
-		REGJUG_Signal = DATA_FIXED_INITREGJUG;
+		REGJUG_Signal = DATA_INIT_POS;
 	// Pos inicial 
-	else if (SC_REGJUG_RESET_InHigh == 1'b0)
+	else if (SC_REGJUG_RESET_InHigh == 1'b1)
 		REGJUG_Signal = DATA_INIT_POS;
 	// Moverlo hacia la izquierda
 	else if (SC_REGJUG_shiftselection_In == 2'b01)
@@ -50,7 +50,7 @@ begin
 always @(posedge SC_REGJUG_CLOCK_50, posedge SC_REGJUG_RESET_InHigh)
 begin
 	if (SC_REGJUG_RESET_InHigh == 1'b1)
-		REGJUG_Register <= 0;
+		REGJUG_Register <= DATA_INIT_POS;
 	else
 		REGJUG_Register <= REGJUG_Signal;
 end

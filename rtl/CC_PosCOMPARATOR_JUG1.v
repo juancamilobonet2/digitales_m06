@@ -47,9 +47,9 @@ input 	[PosCOMPARATOR_DATAWIDTH-1:0] CC_PosCOMPARATOR_JUG1_posjug1;
 always @(CC_PosCOMPARATOR_JUG1_fila0, CC_PosCOMPARATOR_JUG1_posjug1)
 begin
 	if( CC_PosCOMPARATOR_JUG1_fila0 == CC_PosCOMPARATOR_JUG1_posjug1)
-		CC_PosCOMPARATOR_JUG1_OutBUS = 1'b1;
-	else 
 		CC_PosCOMPARATOR_JUG1_OutBUS = 1'b0;
+	else 
+		CC_PosCOMPARATOR_JUG1_OutBUS = 1'b1;
 
 	
 end

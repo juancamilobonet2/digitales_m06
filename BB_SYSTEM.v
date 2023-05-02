@@ -492,7 +492,7 @@ SC_Reg_MATRIX SC_Reg_MATRIX_u0 (
 	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
 	.SC_Reg_MATRIX_load0_InLow(SC_STATEMACHINE_GENERAL_loadMATRIX_cwire),
-	.SC_Reg_MATRIX_data0_InBUS(MUX16x1__01_cwire),
+	.SC_Reg_MATRIX_data0_InBUS(MUX16x1__00_cwire),
 	.SC_Reg_MATRIX_data_OutBUS(Reg0_outBUS1_cwire)
 	
 );
