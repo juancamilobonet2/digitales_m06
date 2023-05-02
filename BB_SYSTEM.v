@@ -167,20 +167,20 @@ wire 	BB_SYSTEM_leftButton_jug1_InLow_cwire;
 wire 	SC_STATEMACHINE_JUG1_clear0_cwire;
 wire 	SC_STATEMACHINE_JUG1_load0_cwire;
 wire 	SC_STATEMACHINE_JUG1_shiftselection0_cwire;
-wire    REGJUG1_COMPARATOR_cwire;
-wire    CC_SIDECOMPARATOR_JUG1_derechaout_cwire;
-wire    CC_SIDECOMPARATOR_JUG1_izquierdaout_cwire;
-wire    CC_POSCOMPARATOR_JUG1_posicionout_cwire;
+wire  REGJUG1_COMPARATOR_cwire;
+wire  CC_SIDECOMPARATOR_JUG1_derechaout_cwire;
+wire  CC_SIDECOMPARATOR_JUG1_izquierdaout_cwire;
+wire  CC_POSCOMPARATOR_JUG1_posicionout_cwire;
 
 
 //	JUGADOR 2
 wire 	SC_STATEMACHINE_JUG2_clear0_cwire;
 wire 	SC_STATEMACHINE_JUG2_load0_cwire;
 wire 	SC_STATEMACHINE_JUG2_shiftselection0_cwire;
-wire    REGJUG2_COMPARATOR_cwire;
-wire    CC_SIDECOMPARATOR_JUG2_derechaout_cwire;
-wire    CC_SIDECOMPARATOR_JUG2_izquierdaout_cwire;
-wire    CC_POSCOMPARATOR_JUG2_posicionout_cwire;
+wire  REGJUG2_COMPARATOR_cwire;
+wire  CC_SIDECOMPARATOR_JUG2_derechaout_cwire;
+wire  CC_SIDECOMPARATOR_JUG2_izquierdaout_cwire;
+wire  CC_POSCOMPARATOR_JUG2_posicionout_cwire;
 
 // Contador Puntos
 wire 	SC_STATEMACHINE_GENERAL_upcount0_cwire;
@@ -196,12 +196,9 @@ wire	SC_STATEMACHINE_GENERAL_speedlimit_cwire;
 
 // Registros matriz y multiplexores
 wire 	SC_STATEMACHINE_GENERAL_loadMATRIX_cwire;
-wire 	SC_STATEMACHINE_GENERAL_select_wire;
-wire 	SC_STATEMACHINE_GENERAL_select0_wire;
-wire 	MUX_16x1toMATRIX_cwire;
-wire 	MATRIX_toMUX_16x1_cwire;
-wire	RANDOM_cwire;
-wire	STATEMACHINE_GENERAL_toMUX16x1_07_cwire;
+wire 	[DATAWIDTH_BUS-1:0] SC_STATEMACHINE_GENERAL_select_wire;
+wire 	[DATAWIDTH_BUS-7:0] SC_STATEMACHINE_GENERAL_select0_wire;
+wire	[DATAWIDTH_BUS-1:0] RANDOM_cwire;
 wire	[DATAWIDTH_BUS-1:0] MUX16x1__07_cwire;
 wire	[DATAWIDTH_BUS-1:0] MUX16x1__06_cwire;
 wire	[DATAWIDTH_BUS-1:0] MUX16x1__05_cwire;
@@ -210,21 +207,21 @@ wire	[DATAWIDTH_BUS-1:0] MUX16x1__03_cwire;
 wire	[DATAWIDTH_BUS-1:0] MUX16x1__02_cwire;
 wire	[DATAWIDTH_BUS-1:0] MUX16x1__01_cwire;
 wire	[DATAWIDTH_BUS-1:0] MUX16x1__00_cwire;
-wire 	Reg7_MATRIX_cwire;
-wire 	Reg6_MATRIX_cwire;
-wire 	Reg5_MATRIX_cwire;
-wire 	Reg4_MATRIX_cwire;
-wire 	Reg3_MATRIX_cwire;
-wire 	Reg2_MATRIX_cwire;
-wire 	Reg1_MATRIX_cwire;
-wire 	Reg0_MATRIX_cwire;
-wire 	Reg0_outBUS1_cwire;
+wire 	[DATAWIDTH_BUS-1:0] Reg7_MATRIX_cwire;
+wire 	[DATAWIDTH_BUS-1:0] Reg6_MATRIX_cwire;
+wire 	[DATAWIDTH_BUS-1:0] Reg5_MATRIX_cwire;
+wire 	[DATAWIDTH_BUS-1:0] Reg4_MATRIX_cwire;
+wire 	[DATAWIDTH_BUS-1:0] Reg3_MATRIX_cwire;
+wire 	[DATAWIDTH_BUS-1:0] Reg2_MATRIX_cwire;
+wire 	[DATAWIDTH_BUS-1:0] Reg1_MATRIX_cwire;
+wire 	[DATAWIDTH_BUS-1:0] Reg0_MATRIX_cwire;
+wire 	[DATAWIDTH_BUS-1:0] Reg0_outBUS1_cwire;
 
 //Ors
 
-wire	CC_ORC_2_outBUS_cwire;
-wire	CC_ORC_0_outBUS_cwire;
-wire	CC_ORC_C_fila0_cwire;
+wire	[DATAWIDTH_BUS-1:0] CC_ORC_2_outBUS_cwire;
+wire	[DATAWIDTH_BUS-1:0] CC_ORC_0_outBUS_cwire;
+wire	[DATAWIDTH_BUS-1:0] CC_ORC_C_fila0_cwire;
 
 //State Machine
 wire	SC_STATEMACHINE_GENERAL_clear0_cwire;
