@@ -109,8 +109,8 @@ input 		[7:0] SC_STATEMACHINE_GENERAL_pointCounter_InBUS;
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
-reg [3:0] STATE_Register;
-reg [3:0] STATE_Signal;
+reg [4:0] STATE_Register;
+reg [4:0] STATE_Signal;
 //=======================================================
 //  Structural coding
 //=======================================================
@@ -133,7 +133,7 @@ begin
 										STATE_Signal = STATE_setSpeed_n1;
 									else 
 										STATE_Signal = STATE_esperarNIVEL_1;
-		STATE_setSpeed_n1:				STATE_Signal = STATE_sumarCarros_0;
+		STATE_setSpeed_n1:	STATE_Signal = STATE_sumarCarros_0;
 
 
 		STATE_NIVEL_2:			STATE_Signal = STATE_esperarNIVEL_2;
@@ -256,8 +256,8 @@ begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow		 		= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedCounter_OutLow 		= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedReset_OutHigh 		= 1'b1;
-			//SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b1000111100001101000110000000;
-			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd1000000;
+			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b1000111100001101000110000000;
+			//SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd1000000;
 			SC_STATEMACHINE_GENERAL_speedCompLoad_OutLow		= 1'b0;
 			SC_STATEMACHINE_GENERAL_pointSignal_OutLow 		= 1'b1; 
 			SC_STATEMACHINE_GENERAL_mux0_OutBUS					= 4'b0001;
@@ -289,8 +289,8 @@ begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow		 		= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedCounter_OutLow 		= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedReset_OutHigh 		= 1'b1;
-			//SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b1000111100001101000110000000;
-			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd1000000;
+			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b1000111100001101000110000000;
+			//SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd1000000;
 			SC_STATEMACHINE_GENERAL_speedCompLoad_OutLow		= 1'b0;
 			SC_STATEMACHINE_GENERAL_pointSignal_OutLow 		= 1'b1; 
 			SC_STATEMACHINE_GENERAL_mux0_OutBUS					= 4'b0010;
@@ -338,8 +338,8 @@ begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow		 	= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedCounter_OutLow 	= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedReset_OutHigh 		= 1'b1;
-			//SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b1000111100001101000110000000;
-			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd1000000;
+			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b1000111100001101000110000000;
+			//SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd1000000;
 			SC_STATEMACHINE_GENERAL_speedCompLoad_OutLow	= 1'b0;
 			SC_STATEMACHINE_GENERAL_pointSignal_OutLow 		= 1'b1; 
 			SC_STATEMACHINE_GENERAL_mux0_OutBUS				= 4'b0011;

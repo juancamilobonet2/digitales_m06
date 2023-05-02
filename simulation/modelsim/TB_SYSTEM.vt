@@ -126,7 +126,7 @@ initial begin
 	//Al presionar el boton de start, deberia ir a estado GO
 	
 	//Se espera 3.01 segundos
-	#20000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
+	#3010000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
 						TB_SYSTEM_startButton_InLow <= 1'b1;
 						TB_SYSTEM_leftButton_jug1_InLow <= 1'b1; 
 						TB_SYSTEM_rightButton_jug1_InLow <= 1'b1;
@@ -135,7 +135,7 @@ initial begin
 	//Deberia pasar al estado Nivel 1
 	
 	//Se espera 1 seg, deberiamos estar en nivel uno.
-	#20000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
+	#1000000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
 						TB_SYSTEM_startButton_InLow <= 1'b1;
 						TB_SYSTEM_leftButton_jug1_InLow <= 1'b1; 
 						TB_SYSTEM_rightButton_jug1_InLow <= 1'b1;

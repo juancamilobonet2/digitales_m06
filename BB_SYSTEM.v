@@ -141,7 +141,7 @@ output		BB_SYSTEM_max7219NCS_Out;
 output		BB_SYSTEM_max7219CLK_Out;
 output		BB_SYSTEM_display_OutBUS;
 
-output 	[7:0]	BB_SYSTEM_startButton_Out;
+output 		BB_SYSTEM_startButton_Out;
 output 		BB_SYSTEM_leftButton_jug1_Out;
 output 		BB_SYSTEM_leftButton_jug2_Out;
 output 		BB_SYSTEM_rightButton_jug1_Out;
@@ -643,10 +643,10 @@ CC_OR_C CC_OR_C_u0 (
 CC_MUX_21 CC_MUX21_u1 (
 
 	.CC_MUX_21_select_InBUS(SC_STATEMACHINE_GENERAL_select0_wire),
-	.CC_MUX_21_data1_InBUS(CC_ORC_C_fila0_cwire),
-	.CC_MUX_21_data2_InBUS(Reg0_outBUS1_cwire),
-	.CC_MUX_21_z_Out(BB_SYSTEM_TEST0)
-//	.CC_MUX_21_z_Out(Reg0_MATRIX_cwire)
+	.CC_MUX_21_data1_InBUS(Reg0_outBUS1_cwire),
+	.CC_MUX_21_data2_InBUS(CC_ORC_C_fila0_cwire),
+	//.CC_MUX_21_z_Out(BB_SYSTEM_TEST0)
+	.CC_MUX_21_z_Out(Reg0_MATRIX_cwire)
 	
 );
 
@@ -719,7 +719,7 @@ assign BB_SYSTEM_leftButton_jug2_Out = BB_SYSTEM_leftButton_jug2_InLow_cwire;
 assign BB_SYSTEM_rightButton_jug2_Out = BB_SYSTEM_rightButton_jug2_InLow_cwire;
 
 //TO TEST
-//assign BB_SYSTEM_TEST0 = Reg0_MATRIX_cwire[0];
+assign BB_SYSTEM_TEST0 = Reg0_MATRIX_cwire[0];
 assign BB_SYSTEM_TEST1 = Reg0_MATRIX_cwire[1];
 assign BB_SYSTEM_TEST2 = Reg0_MATRIX_cwire[2];
 assign BB_SYSTEM_TEST3 = Reg0_MATRIX_cwire[3];
