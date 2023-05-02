@@ -202,14 +202,14 @@ wire 	MUX_16x1toMATRIX_cwire;
 wire 	MATRIX_toMUX_16x1_cwire;
 wire	RANDOM_cwire;
 wire	STATEMACHINE_GENERAL_toMUX16x1_07_cwire;
-wire	MUX16x1__07_cwire;
-wire	MUX16x1__06_cwire;
-wire	MUX16x1__05_cwire;
-wire	MUX16x1__04_cwire;
-wire	MUX16x1__03_cwire;
-wire	MUX16x1__02_cwire;
-wire	MUX16x1__01_cwire;
-wire	MUX16x1__00_cwire;
+wire	[DATAWIDTH_BUS-1:0] MUX16x1__07_cwire;
+wire	[DATAWIDTH_BUS-1:0] MUX16x1__06_cwire;
+wire	[DATAWIDTH_BUS-1:0] MUX16x1__05_cwire;
+wire	[DATAWIDTH_BUS-1:0] MUX16x1__04_cwire;
+wire	[DATAWIDTH_BUS-1:0] MUX16x1__03_cwire;
+wire	[DATAWIDTH_BUS-1:0] MUX16x1__02_cwire;
+wire	[DATAWIDTH_BUS-1:0] MUX16x1__01_cwire;
+wire	[DATAWIDTH_BUS-1:0] MUX16x1__00_cwire;
 wire 	Reg7_MATRIX_cwire;
 wire 	Reg6_MATRIX_cwire;
 wire 	Reg5_MATRIX_cwire;
@@ -413,7 +413,6 @@ SC_Reg_MATRIX SC_Reg_MATRIX_u7 (
 	.SC_Reg_MATRIX_load0_InLow(SC_STATEMACHINE_GENERAL_loadMATRIX_cwire),
 	.SC_Reg_MATRIX_data0_InBUS(MUX16x1__07_cwire),
 	.SC_Reg_MATRIX_data_OutBUS(Reg7_MATRIX_cwire)
-	
 );
 
 
@@ -644,7 +643,7 @@ CC_MUX_21 CC_MUX21_u1 (
 SC_STATEMACHINE_GENERAL SC_STATEMACHINE_GENERAL_u0 (
 	.SC_STATEMACHINE_GENERAL_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_STATEMACHINE_GENERAL_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
-	.SC_STATEMACHINE_GENERAL_startButton_InLow(BB_SYSTEM_startButton_InLow),
+	.SC_STATEMACHINE_GENERAL_startButton_InLow(BB_SYSTEM_startButton_InLow_cwire),
 	//.SC_STATEMACHINE_GENERAL_timer_InLow(),
 	.SC_STATEMACHINE_GENERAL_speedComparator_InLow(CC_SPEEDCOMPARATOR_speedout_cwire),
 	.SC_STATEMACHINE_GENERAL_posJug1_InLow(CC_POSCOMPARATOR_JUG1_posicionout_cwire),
