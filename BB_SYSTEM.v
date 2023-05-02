@@ -33,6 +33,11 @@ module BB_SYSTEM (
 	BB_SYSTEM_TEST0,
 	BB_SYSTEM_TEST1,
 	BB_SYSTEM_TEST2,
+	BB_SYSTEM_TEST3,
+	BB_SYSTEM_TEST4,
+	BB_SYSTEM_TEST5,
+	BB_SYSTEM_TEST6,
+	BB_SYSTEM_TEST7,
 
 //////////// INPUTS //////////
 	BB_SYSTEM_CLOCK_50,
@@ -136,14 +141,22 @@ output		BB_SYSTEM_max7219NCS_Out;
 output		BB_SYSTEM_max7219CLK_Out;
 output		BB_SYSTEM_display_OutBUS;
 
-output 		BB_SYSTEM_startButton_Out;
+output 	[7:0]	BB_SYSTEM_startButton_Out;
 output 		BB_SYSTEM_leftButton_jug1_Out;
 output 		BB_SYSTEM_leftButton_jug2_Out;
 output 		BB_SYSTEM_rightButton_jug1_Out;
 output 		BB_SYSTEM_rightButton_jug2_Out;
-output 		BB_SYSTEM_TEST0;
+
+output		BB_SYSTEM_TEST0;
 output 		BB_SYSTEM_TEST1;
 output 		BB_SYSTEM_TEST2;
+output		BB_SYSTEM_TEST3;
+output 		BB_SYSTEM_TEST4;
+output 		BB_SYSTEM_TEST5;
+output		BB_SYSTEM_TEST6;
+output 		BB_SYSTEM_TEST7;
+
+
 
 input		BB_SYSTEM_CLOCK_50;
 input		BB_SYSTEM_RESET_InHigh;
@@ -166,8 +179,8 @@ wire 	BB_SYSTEM_leftButton_jug1_InLow_cwire;
 //	JUGADOR 1
 wire 	SC_STATEMACHINE_JUG1_clear0_cwire;
 wire 	SC_STATEMACHINE_JUG1_load0_cwire;
-wire 	SC_STATEMACHINE_JUG1_shiftselection0_cwire;
-wire  REGJUG1_COMPARATOR_cwire;
+wire 	[1:0] SC_STATEMACHINE_JUG1_shiftselection0_cwire;
+wire  [DATAWIDTH_BUS-1:0] REGJUG1_COMPARATOR_cwire;
 wire  CC_SIDECOMPARATOR_JUG1_derechaout_cwire;
 wire  CC_SIDECOMPARATOR_JUG1_izquierdaout_cwire;
 wire  CC_POSCOMPARATOR_JUG1_posicionout_cwire;
@@ -176,28 +189,28 @@ wire  CC_POSCOMPARATOR_JUG1_posicionout_cwire;
 //	JUGADOR 2
 wire 	SC_STATEMACHINE_JUG2_clear0_cwire;
 wire 	SC_STATEMACHINE_JUG2_load0_cwire;
-wire 	SC_STATEMACHINE_JUG2_shiftselection0_cwire;
-wire  REGJUG2_COMPARATOR_cwire;
+wire 	[1:0] SC_STATEMACHINE_JUG2_shiftselection0_cwire;
+wire  [DATAWIDTH_BUS-1:0] REGJUG2_COMPARATOR_cwire;
 wire  CC_SIDECOMPARATOR_JUG2_derechaout_cwire;
 wire  CC_SIDECOMPARATOR_JUG2_izquierdaout_cwire;
 wire  CC_POSCOMPARATOR_JUG2_posicionout_cwire;
 
 // Contador Puntos
 wire 	SC_STATEMACHINE_GENERAL_upcount0_cwire;
-wire 	SC_POINTCOUNTER_data0_cwire;
+wire 	[DATAWIDTH_BUS-1:0] SC_POINTCOUNTER_data0_cwire;
 
 //  Velocidad
 wire 	SC_STATEMACHINE_GENERAL_upcount1_cwire;
-wire 	SC_SPEEDCOUNTER_speed_cwire;
+wire 	[27:0] SC_SPEEDCOUNTER_speed_cwire;
 wire	SC_STATEMACHINE_GENERAL_loadspeed_cwire;
 wire	CC_SPEEDCOMPARATOR_speedout_cwire;
 wire	SC_STATEMACHINE_GENERAL_RESETspeedCounter_cwire;
-wire	SC_STATEMACHINE_GENERAL_speedlimit_cwire;
+wire	[27:0]  SC_STATEMACHINE_GENERAL_speedlimit_cwire;
 
 // Registros matriz y multiplexores
 wire 	SC_STATEMACHINE_GENERAL_loadMATRIX_cwire;
-wire 	[DATAWIDTH_BUS-1:0] SC_STATEMACHINE_GENERAL_select_wire;
-wire 	[DATAWIDTH_BUS-7:0] SC_STATEMACHINE_GENERAL_select0_wire;
+wire 	[3:0] SC_STATEMACHINE_GENERAL_select_wire;
+wire 	SC_STATEMACHINE_GENERAL_select0_wire;
 wire	[DATAWIDTH_BUS-1:0] RANDOM_cwire;
 wire	[DATAWIDTH_BUS-1:0] MUX16x1__07_cwire;
 wire	[DATAWIDTH_BUS-1:0] MUX16x1__06_cwire;
@@ -632,7 +645,9 @@ CC_MUX_21 CC_MUX21_u1 (
 	.CC_MUX_21_select_InBUS(SC_STATEMACHINE_GENERAL_select0_wire),
 	.CC_MUX_21_data1_InBUS(CC_ORC_C_fila0_cwire),
 	.CC_MUX_21_data2_InBUS(Reg0_outBUS1_cwire),
-	.CC_MUX_21_z_Out(Reg0_MATRIX_cwire)
+	.CC_MUX_21_z_Out(BB_SYSTEM_TEST0)
+//	.CC_MUX_21_z_Out(Reg0_MATRIX_cwire)
+	
 );
 
 //State Machine GENERAL
@@ -653,8 +668,8 @@ SC_STATEMACHINE_GENERAL SC_STATEMACHINE_GENERAL_u0 (
 	.SC_STATEMACHINE_GENERAL_speedComparator_OutBUS(SC_STATEMACHINE_GENERAL_speedlimit_cwire),
 	.SC_STATEMACHINE_GENERAL_speedCompLoad_OutLow(SC_STATEMACHINE_GENERAL_loadspeed_cwire),
 	.SC_STATEMACHINE_GENERAL_pointSignal_OutLow(SC_STATEMACHINE_GENERAL_upcount0_cwire),
-	.SC_STATEMACHINE_GENERAL_mux0_OutBUS(SC_STATEMACHINE_GENERAL_select0_wire),
-	.SC_STATEMACHINE_GENERAL_mux8_OutBUS(SC_STATEMACHINE_GENERAL_select_wire)
+	.SC_STATEMACHINE_GENERAL_mux0_OutBUS(SC_STATEMACHINE_GENERAL_select_wire),
+	.SC_STATEMACHINE_GENERAL_mux8_OutBUS(SC_STATEMACHINE_GENERAL_select0_wire)
 	//.SC_STATEMACHINE_GENERAL_random_OutLow(),
 	//.SC_STATEMACHINE_GENERAL_STATE_OutBUS()
 
@@ -704,9 +719,14 @@ assign BB_SYSTEM_leftButton_jug2_Out = BB_SYSTEM_leftButton_jug2_InLow_cwire;
 assign BB_SYSTEM_rightButton_jug2_Out = BB_SYSTEM_rightButton_jug2_InLow_cwire;
 
 //TO TEST
-assign BB_SYSTEM_TEST0 = BB_SYSTEM_startButton_InLow_cwire;
-assign BB_SYSTEM_TEST1 = BB_SYSTEM_startButton_InLow_cwire;
-assign BB_SYSTEM_TEST2 = BB_SYSTEM_startButton_InLow_cwire;
+//assign BB_SYSTEM_TEST0 = Reg0_MATRIX_cwire[0];
+assign BB_SYSTEM_TEST1 = Reg0_MATRIX_cwire[1];
+assign BB_SYSTEM_TEST2 = Reg0_MATRIX_cwire[2];
+assign BB_SYSTEM_TEST3 = Reg0_MATRIX_cwire[3];
+assign BB_SYSTEM_TEST4 = Reg0_MATRIX_cwire[4];
+assign BB_SYSTEM_TEST5 = Reg0_MATRIX_cwire[5];
+assign BB_SYSTEM_TEST6 = Reg0_MATRIX_cwire[6];
+assign BB_SYSTEM_TEST7 = Reg0_MATRIX_cwire[7];
 
 
 

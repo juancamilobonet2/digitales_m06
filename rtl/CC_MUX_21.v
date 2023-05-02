@@ -16,7 +16,7 @@ parameter NUMBER_DATAWIDTH = 8;
 output reg [NUMBER_DATAWIDTH-1:0] CC_MUX_21_z_Out;
 input 	[NUMBER_DATAWIDTH-1:0] CC_MUX_21_data1_InBUS;
 input 	[NUMBER_DATAWIDTH-1:0] CC_MUX_21_data2_InBUS;
-input 	[NUMBER_DATAWIDTH-7:0] CC_MUX_21_select_InBUS;
+input 	CC_MUX_21_select_InBUS;
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================

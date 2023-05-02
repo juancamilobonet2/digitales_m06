@@ -8,8 +8,19 @@ add wave  -divider LedMATRIX
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_CLOCK_50
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_RESET_InHigh
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_startButton_InLow
-add wave -noupdate /TB_SYSTEM/TB_SYSTEM_leftButton_InLow
-add wave -noupdate /TB_SYSTEM/TB_SYSTEM_rightButton_InLow
+add wave -noupdate /TB_SYSTEM/TB_SYSTEM_leftButton_jug1_InLow
+add wave -noupdate /TB_SYSTEM/TB_SYSTEM_rightButton_jug1_InLow
+add wave -noupdate /TB_SYSTEM/TB_SYSTEM_leftButton_jug2_InLow
+add wave -noupdate /TB_SYSTEM/TB_SYSTEM_rightButton_jug2_InLow
+
+add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST0
+add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST1
+add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST2
+add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST3
+add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST4
+add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST5
+add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST6
+add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST7
 
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_max7219DIN_Out
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_max7219NCS_Out
