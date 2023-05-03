@@ -45,15 +45,7 @@ input 	[PosCOMPARATOR_DATAWIDTH-1:0] CC_PosCOMPARATOR_JUG2_posjug2;
 //=======================================================
 always @(CC_PosCOMPARATOR_JUG2_fila0, CC_PosCOMPARATOR_JUG2_posjug2)
 begin
-	if( CC_PosCOMPARATOR_JUG2_fila0[0] == CC_PosCOMPARATOR_JUG2_posjug2[0])
-		CC_PosCOMPARATOR_JUG2_OutBUS = 1'b0;
-	else if ( CC_PosCOMPARATOR_JUG2_fila0[1] == CC_PosCOMPARATOR_JUG2_posjug2[1])
-		CC_PosCOMPARATOR_JUG2_OutBUS = 1'b0;
-	else if ( CC_PosCOMPARATOR_JUG2_fila0[2] == CC_PosCOMPARATOR_JUG2_posjug2[2])
-		CC_PosCOMPARATOR_JUG2_OutBUS = 1'b0;
-	else if ( CC_PosCOMPARATOR_JUG2_fila0[3] == CC_PosCOMPARATOR_JUG2_posjug2[3])
-		CC_PosCOMPARATOR_JUG2_OutBUS = 1'b0;
-	else if ( CC_PosCOMPARATOR_JUG2_fila0[4] == CC_PosCOMPARATOR_JUG2_posjug2[4])
+	if ( CC_PosCOMPARATOR_JUG2_fila0[4] == CC_PosCOMPARATOR_JUG2_posjug2[4])
 		CC_PosCOMPARATOR_JUG2_OutBUS = 1'b0;
 	else if ( CC_PosCOMPARATOR_JUG2_fila0[5] == CC_PosCOMPARATOR_JUG2_posjug2[5])
 		CC_PosCOMPARATOR_JUG2_OutBUS = 1'b0;
