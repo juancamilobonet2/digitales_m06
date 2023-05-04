@@ -109,7 +109,7 @@ begin
 //=========================================================
 	STATE_RESET_0 :	
 		begin
-			SC_STATEMACHINE_JUG1_clear_OutLow = 1'b1;
+			SC_STATEMACHINE_JUG1_clear_OutLow = 1'b0;
 			SC_STATEMACHINE_JUG1_shiftselection_Out  = 2'b11; 
 		end
 //=========================================================
@@ -117,7 +117,7 @@ begin
 //=========================================================
 	STATE_START_0 :	
 		begin
-			SC_STATEMACHINE_JUG1_clear_OutLow = 1'b1;
+			SC_STATEMACHINE_JUG1_clear_OutLow = 1'b0;
 			SC_STATEMACHINE_JUG1_shiftselection_Out  = 2'b11; 
 		end
 //=========================================================

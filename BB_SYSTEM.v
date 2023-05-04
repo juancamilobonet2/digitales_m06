@@ -304,7 +304,7 @@ SC_DEBOUNCE1 SC_DEBOUNCE1_u4 (
 //######################################################################
 // Registros de jugador
 
-SC_REGJUG SC_REGJUG_u0 (
+SC_REGJUG #(.DATA_INIT_POS(8'b01000000)) SC_REGJUG_u0 (
 // conexiones de entrada al registro del jugador 1
 	.SC_REGJUG_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_REGJUG_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
@@ -313,7 +313,7 @@ SC_REGJUG SC_REGJUG_u0 (
 	.SC_REGJUG_data_OutBUS(REGJUG1_COMPARATOR_cwire)
 	
 );
-SC_REGJUG SC_REGJUG_u1 (
+SC_REGJUG #(.DATA_INIT_POS(8'b00000100)) SC_REGJUG_u1 (
 	.SC_REGJUG_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_REGJUG_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_REGJUG_clear_InLow(SC_STATEMACHINE_JUG2_clear0_cwire),
@@ -495,6 +495,14 @@ SC_Reg_MATRIX SC_Reg_MATRIX_u0 (
 	.SC_Reg_MATRIX_data0_InBUS(MUX16x1__00_cwire),
 	.SC_Reg_MATRIX_data_OutBUS(Reg0_outBUS1_cwire)
 	
+);
+
+//RANDOM
+
+SC_RANDOM SC_RANDOM_u0 (
+	.SC_RANDOM_CLOCK_50(BB_SYSTEM_CLOCK_50),
+	.SC_RANDOM_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
+	.SC_RANDOM_data_OutBUS(RANDOM_cwire)
 );
 
 

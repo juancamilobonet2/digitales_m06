@@ -63,7 +63,7 @@ begin
 		RegSHIFTER_Register <= 8'b00000001;
 	else
 		if ((RegSHIFTER_Signal[RegSHIFTER_DATAWIDTH-1:4] == 4'b1111) || (RegSHIFTER_Signal[3:0] == 4'b1111))
-			RegSHIFTER_Register <= 8'b10111101;
+			RegSHIFTER_Register <= 8'b00000001;
 		else
 			RegSHIFTER_Register <= RegSHIFTER_Signal;
 end

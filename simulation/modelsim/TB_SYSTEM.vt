@@ -104,83 +104,83 @@ always
 	#(TCK/2) TB_SYSTEM_CLOCK_50 <= ~ TB_SYSTEM_CLOCK_50;
 initial begin                                                  
 // code executes for every event on sensitivity list   
-// insert code here --> begin     
-	random1 <= $random;
+// insert code here --> begin
 	
 	//Se hace reset
 	#0 			TB_SYSTEM_RESET_InHigh <= 1'b1; 
-					TB_SYSTEM_startButton_InLow <= 1'b1;
-					TB_SYSTEM_leftButton_jug1_InLow <= 1'b1; 
-					TB_SYSTEM_rightButton_jug1_InLow <= 1'b1;
-					TB_SYSTEM_leftButton_jug2_InLow <= 1'b1; 
-					TB_SYSTEM_rightButton_jug2_InLow <= 1'b1;
+					TB_SYSTEM_startButton_InLow <= 1'b0;
+					TB_SYSTEM_leftButton_jug1_InLow <= 1'b0; 
+					TB_SYSTEM_rightButton_jug1_InLow <= 1'b0;
+					TB_SYSTEM_leftButton_jug2_InLow <= 1'b0; 
+					TB_SYSTEM_rightButton_jug2_InLow <= 1'b0;
 	//Deberia ir al estado start con la pantalla de start, hasta que se presione el boton start
 
 	//Se presiona el boton de start. 
 	#1000 			TB_SYSTEM_RESET_InHigh <= 1'b0;
-						TB_SYSTEM_startButton_InLow <= 1'b0;
-						TB_SYSTEM_leftButton_jug1_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug1_InLow <= 1'b1;
-						TB_SYSTEM_leftButton_jug2_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug2_InLow <= 1'b1;	
+						TB_SYSTEM_startButton_InLow <= 1'b1;
+						TB_SYSTEM_leftButton_jug1_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug1_InLow <= 1'b0;
+						TB_SYSTEM_leftButton_jug2_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug2_InLow <= 1'b0;	
 	//Al presionar el boton de start, deberia ir a estado GO
 	
 	//Se espera 3.01 segundos
-	#3010000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
-						TB_SYSTEM_startButton_InLow <= 1'b1;
-						TB_SYSTEM_leftButton_jug1_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug1_InLow <= 1'b1;
-						TB_SYSTEM_leftButton_jug2_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug2_InLow <= 1'b1;	
+	//#3010000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
+	#1000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
+						TB_SYSTEM_startButton_InLow <= 1'b0;
+						TB_SYSTEM_leftButton_jug1_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug1_InLow <= 1'b0;
+						TB_SYSTEM_leftButton_jug2_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug2_InLow <= 1'b0;	
 	//Deberia pasar al estado Nivel 1
 	
 	//Se espera 1 seg, deberiamos estar en nivel uno.
-	#1000000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
-						TB_SYSTEM_startButton_InLow <= 1'b1;
-						TB_SYSTEM_leftButton_jug1_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug1_InLow <= 1'b1;
-						TB_SYSTEM_leftButton_jug2_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug2_InLow <= 1'b1;	
+	#1000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
+						TB_SYSTEM_startButton_InLow <= 1'b0;
+						TB_SYSTEM_leftButton_jug1_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug1_InLow <= 1'b0;
+						TB_SYSTEM_leftButton_jug2_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug2_InLow <= 1'b0;	
 						
 	//Movemos jug1 a la derecha.
-	#10000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
-						TB_SYSTEM_startButton_InLow <= 1'b1;
-						TB_SYSTEM_leftButton_jug1_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug1_InLow <= 1'b0;
-						TB_SYSTEM_leftButton_jug2_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug2_InLow <= 1'b1;	
-
-	//Movemos jug2 a la derecha.
-	#10000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
-						TB_SYSTEM_startButton_InLow <= 1'b1;
-						TB_SYSTEM_leftButton_jug1_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug1_InLow <= 1'b1;
-						TB_SYSTEM_leftButton_jug2_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug2_InLow <= 1'b0;
-					
-	//Movemos jug1 a la izquierda
-	#10000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
-						TB_SYSTEM_startButton_InLow <= 1'b1;
+	#1000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
+						TB_SYSTEM_startButton_InLow <= 1'b0;
 						TB_SYSTEM_leftButton_jug1_InLow <= 1'b0; 
 						TB_SYSTEM_rightButton_jug1_InLow <= 1'b1;
-						TB_SYSTEM_leftButton_jug2_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug2_InLow <= 1'b1;	
+						TB_SYSTEM_leftButton_jug2_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug2_InLow <= 1'b0;	
+
+	//Movemos jug2 a la derecha.
+	#1000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
+						TB_SYSTEM_startButton_InLow <= 1'b0;
+						TB_SYSTEM_leftButton_jug1_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug1_InLow <= 1'b0;
+						TB_SYSTEM_leftButton_jug2_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug2_InLow <= 1'b1;
+					
+	//Movemos jug1 a la izquierda
+	#1000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
+						TB_SYSTEM_startButton_InLow <= 1'b0;
+						TB_SYSTEM_leftButton_jug1_InLow <= 1'b1; 
+						TB_SYSTEM_rightButton_jug1_InLow <= 1'b0;
+						TB_SYSTEM_leftButton_jug2_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug2_InLow <= 1'b0;	
 						
 	//Movemos jug2 a la izquierda
-	#10000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
-						TB_SYSTEM_startButton_InLow <= 1'b1;
-						TB_SYSTEM_leftButton_jug1_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug1_InLow <= 1'b1;
-						TB_SYSTEM_leftButton_jug2_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug2_InLow <= 1'b0;	
+	#1000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
+						TB_SYSTEM_startButton_InLow <= 1'b0;
+						TB_SYSTEM_leftButton_jug1_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug1_InLow <= 1'b0;
+						TB_SYSTEM_leftButton_jug2_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug2_InLow <= 1'b1;	
 							
 	//no se hace nada
-	#10000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
-						TB_SYSTEM_startButton_InLow <= 1'b1;
-						TB_SYSTEM_leftButton_jug1_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug1_InLow <= 1'b1;
-						TB_SYSTEM_leftButton_jug2_InLow <= 1'b1; 
-						TB_SYSTEM_rightButton_jug2_InLow <= 1'b1;	
+	#1000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
+						TB_SYSTEM_startButton_InLow <= 1'b0;
+						TB_SYSTEM_leftButton_jug1_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug1_InLow <= 1'b0;
+						TB_SYSTEM_leftButton_jug2_InLow <= 1'b0; 
+						TB_SYSTEM_rightButton_jug2_InLow <= 1'b0;	
 		
 	
 	

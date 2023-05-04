@@ -46,13 +46,13 @@ input 	[PosCOMPARATOR_DATAWIDTH-1:0] CC_PosCOMPARATOR_JUG1_posjug1;
 //=======================================================
 always @(CC_PosCOMPARATOR_JUG1_fila0, CC_PosCOMPARATOR_JUG1_posjug1)
 begin
-	if( CC_PosCOMPARATOR_JUG1_fila0[0] == CC_PosCOMPARATOR_JUG1_posjug1[0])
+	if( CC_PosCOMPARATOR_JUG1_fila0[4] && CC_PosCOMPARATOR_JUG1_posjug1[4])
 		CC_PosCOMPARATOR_JUG1_OutBUS = 1'b0;
-	else if ( CC_PosCOMPARATOR_JUG1_fila0[1] == CC_PosCOMPARATOR_JUG1_posjug1[1])
+	else if ( CC_PosCOMPARATOR_JUG1_fila0[7] && CC_PosCOMPARATOR_JUG1_posjug1[7])
 		CC_PosCOMPARATOR_JUG1_OutBUS = 1'b0;
-	else if ( CC_PosCOMPARATOR_JUG1_fila0[2] == CC_PosCOMPARATOR_JUG1_posjug1[2])
+	else if ( CC_PosCOMPARATOR_JUG1_fila0[6] && CC_PosCOMPARATOR_JUG1_posjug1[6])
 		CC_PosCOMPARATOR_JUG1_OutBUS = 1'b0;
-	else if ( CC_PosCOMPARATOR_JUG1_fila0[3] == CC_PosCOMPARATOR_JUG1_posjug1[3])
+	else if ( CC_PosCOMPARATOR_JUG1_fila0[5] && CC_PosCOMPARATOR_JUG1_posjug1[5])
 		CC_PosCOMPARATOR_JUG1_OutBUS = 1'b0;
 	else 
 		CC_PosCOMPARATOR_JUG1_OutBUS = 1'b1;

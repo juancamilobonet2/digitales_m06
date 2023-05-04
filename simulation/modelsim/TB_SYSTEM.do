@@ -13,14 +13,20 @@ add wave -noupdate /TB_SYSTEM/TB_SYSTEM_rightButton_jug1_InLow
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_leftButton_jug2_InLow
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_rightButton_jug2_InLow
 
-add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST0
-add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST1
-add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST2
-add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST3
-add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST4
-add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST5
-add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST6
-add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST7
+
+add wave -divider JUGADORES
+
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_REGJUG_u0/SC_REGJUG_data_OutBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_REGJUG_u1/SC_REGJUG_data_OutBUS
+
+#add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST0
+#add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST1
+#add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST2
+#add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST3
+#add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST4
+#add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST5
+#add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST6
+#add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST7
 
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_max7219DIN_Out
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_max7219NCS_Out
@@ -43,15 +49,15 @@ add wave -noupdate /TB_SYSTEM/TB_SYSTEM_max7219CLK_Out
 #add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/matrix_ctrl_unit_0/Trig_SignalNEG
 #add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/matrix_ctrl_unit_0/Trig_SignalPOS
 
-add wave  -divider SC_Reg_MATRIX_u7
+add wave  -divider MATRIX
 
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u7/CC_MUX16X1_z_Out
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u6/CC_MUX16X1_z_Out
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u5/CC_MUX16X1_z_Out
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u4/CC_MUX16X1_z_Out
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u3/CC_MUX16X1_z_Out
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u2/CC_MUX16X1_z_Out
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u1/CC_MUX16X1_z_Out
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_Reg_MATRIX_u7/SC_Reg_MATRIX_data_OutBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_Reg_MATRIX_u6/SC_Reg_MATRIX_data_OutBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_Reg_MATRIX_u5/SC_Reg_MATRIX_data_OutBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_Reg_MATRIX_u4/SC_Reg_MATRIX_data_OutBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_Reg_MATRIX_u3/SC_Reg_MATRIX_data_OutBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_Reg_MATRIX_u2/SC_Reg_MATRIX_data_OutBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_Reg_MATRIX_u1/SC_Reg_MATRIX_data_OutBUS
 add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX21_u1/CC_MUX_21_z_Out
 
 
