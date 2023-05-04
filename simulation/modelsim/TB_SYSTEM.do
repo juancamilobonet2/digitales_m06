@@ -13,12 +13,6 @@ add wave -noupdate /TB_SYSTEM/TB_SYSTEM_rightButton_jug1_InLow
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_leftButton_jug2_InLow
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_rightButton_jug2_InLow
 
-
-add wave -divider JUGADORES
-
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_REGJUG_u0/SC_REGJUG_data_OutBUS
-add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_REGJUG_u1/SC_REGJUG_data_OutBUS
-
 #add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST0
 #add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST1
 #add wave -noupdate /TB_SYSTEM/TB_SYSTEM_TEST2
@@ -31,6 +25,25 @@ add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_REGJUG_u1/SC_REGJUG_data_OutBUS
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_max7219DIN_Out
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_max7219NCS_Out
 add wave -noupdate /TB_SYSTEM/TB_SYSTEM_max7219CLK_Out
+
+add wave -divider selector_MUXs
+
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u7/CC_MUX16X1_select_InBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u6/CC_MUX16X1_select_InBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u5/CC_MUX16X1_select_InBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u4/CC_MUX16X1_select_InBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u3/CC_MUX16X1_select_InBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u2/CC_MUX16X1_select_InBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX16X1_u1/CC_MUX16X1_select_InBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_MUX21_u1/CC_MUX_21_select_InBUS
+
+add wave -divider speed counter
+
+
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_SPEEDCOUNTER_u1/SC_SPEEDCOUNTER_data_OutBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/CC_SPEEDCOMPARATOR_u1/CC_SPEEDCOMPARATOR_signal_OutLow
+
+
 
 #add wave  -divider SC_DEBOUNCE1_u0
 #add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_DEBOUNCE1_u0/SC_DEBOUNCE1_button_In
@@ -48,6 +61,17 @@ add wave -noupdate /TB_SYSTEM/TB_SYSTEM_max7219CLK_Out
 #add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/matrix_ctrl_unit_0/clk_driverS
 #add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/matrix_ctrl_unit_0/Trig_SignalNEG
 #add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/matrix_ctrl_unit_0/Trig_SignalPOS
+
+add wave -divider SM_GENERAL
+
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_STATEMACHINE_GENERAL_u0/SC_STATEMACHINE_GENERAL_STATE_OutBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_STATEMACHINE_GENERAL_u0/SC_STATEMACHINE_GENERAL_load0_OutLow
+
+
+add wave -divider JUGADORES
+
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_REGJUG_u0/SC_REGJUG_data_OutBUS
+add wave -noupdate /TB_SYSTEM/BB_SYSTEM_u0/SC_REGJUG_u1/SC_REGJUG_data_OutBUS
 
 add wave  -divider MATRIX
 

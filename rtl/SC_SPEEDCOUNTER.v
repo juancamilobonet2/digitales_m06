@@ -49,10 +49,10 @@ reg [SPEEDCOUNTER_DATAWIDTH-1:0] SPEEDCOUNTER_Signal;
 //INPUT LOGIC: COMBINATIONAL
 always @(*)
 begin
-	if (SC_SPEEDCOUNTER_upcount_InLow == 1'b0)
-		SPEEDCOUNTER_Signal = SPEEDCOUNTER_Register + 1'b1;
-	else
-		SPEEDCOUNTER_Signal = SPEEDCOUNTER_Register;
+	//if (SC_SPEEDCOUNTER_upcount_InLow == 1'b0)
+	SPEEDCOUNTER_Signal = SPEEDCOUNTER_Register + 1'b1;
+//	else
+//		SPEEDCOUNTER_Signal = SPEEDCOUNTER_Register;
 	end	
 //STATE REGISTER: SEQUENTIAL
 always @(posedge SC_SPEEDCOUNTER_CLOCK_50, posedge SC_SPEEDCOUNTER_RESET_InHigh)
