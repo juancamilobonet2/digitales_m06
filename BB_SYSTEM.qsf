@@ -6,7 +6,7 @@ set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE22F17C6
 set_global_assignment -name TOP_LEVEL_ENTITY "BB_SYSTEM"
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 12.0
-set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "19.1.0 Lite Edition"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "13:35:02 FEBRUARY 19,2018"
 set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT 256
@@ -144,20 +144,20 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BB_SYSTEM_max7219CLK
 #set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BB_SYSTEM_addendB_InBUS[2]
 
 #GPIO_019
-set_location_assignment PIN_D8 -to BB_SYSTEM_downButton_InLow
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BB_SYSTEM_downButton_InLow
+#set_location_assignment PIN_D8 -to BB_SYSTEM_downButton_InLow
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BB_SYSTEM_downButton_InLow
 
 #GPIO_020
-set_location_assignment PIN_E8 -to BB_SYSTEM_rightButton_InLow
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BB_SYSTEM_rightButton_InLow
+set_location_assignment PIN_E8 -to BB_SYSTEM_rightButton_jug2_InLow
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BB_SYSTEM_rightButton_jug2_InLow
 
 #GPIO_021
-set_location_assignment PIN_F8 -to BB_SYSTEM_upButton_InLow
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BB_SYSTEM_upButton_InLow
+#set_location_assignment PIN_F8 -to BB_SYSTEM_upButton_InLow
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BB_SYSTEM_upButton_InLow
 
 #GPIO_022
-set_location_assignment PIN_F9 -to BB_SYSTEM_leftButton_InLow
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BB_SYSTEM_leftButton_InLow
+set_location_assignment PIN_F9 -to BB_SYSTEM_leftButton_jug2_InLow
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BB_SYSTEM_leftButton_jug2_InLow
 
 #GPIO_023
 #set_location_assignment PIN_E9 -to BB_SYSTEM_sum_OutBUS[5]
@@ -294,16 +294,16 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BB_SYSTEM_display_Ou
 #set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO1[19]
 
 #GPIO_120
-#set_location_assignment PIN_P15 -to GPIO1[20]
-#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO1[20]
+set_location_assignment PIN_P15 -to BB_SYSTEM_rightButton_jug1_InLow
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BB_SYSTEM_rightButton_jug1_InLow
 
 #GPIO_121
 #set_location_assignment PIN_P16 -to GPIO1[21]
 #set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO1[21]
 
 #GPIO_122
-#set_location_assignment PIN_R14 -to GPIO1[22]
-#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO1[22]
+set_location_assignment PIN_R14 -to BB_SYSTEM_leftButton_jug1_InLow
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BB_SYSTEM_leftButton_jug1_InLow
 
 #GPIO_123
 set_location_assignment PIN_N16 -to BB_SYSTEM_startButton_InLow
@@ -386,10 +386,30 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 
 
 
+set_global_assignment -name VERILOG_FILE rtl/SC_STATEMACHINE_GENERAL.v
+set_global_assignment -name VERILOG_FILE rtl/SC_SPEEDCOUNTER.v
+set_global_assignment -name VERILOG_FILE rtl/SC_POINTCOUNTER.v
+set_global_assignment -name VERILOG_FILE rtl/SC_COUNTER.v
+set_global_assignment -name VERILOG_FILE rtl/CC_SPEEDCOMPARATOR.v
+set_global_assignment -name VERILOG_FILE rtl/CC_OR_C.v
+set_global_assignment -name VERILOG_FILE rtl/CC_MUX_21.v
+set_global_assignment -name VERILOG_FILE rtl/CC_MUX_16X1.v
+set_global_assignment -name VERILOG_FILE rtl/SC_STATEMACHINE_JUG2.v
+set_global_assignment -name VERILOG_FILE rtl/SC_STATEMACHINE_JUG1.v
+set_global_assignment -name VERILOG_FILE rtl/SC_Reg_MATRIX.v
+set_global_assignment -name VERILOG_FILE rtl/SC_RANDOM.v
+set_global_assignment -name VERILOG_FILE rtl/OR_C.v
+set_global_assignment -name VERILOG_FILE rtl/MUX_81.v
+set_global_assignment -name VERILOG_FILE rtl/MUX_21.v
+set_global_assignment -name VERILOG_FILE rtl/CC_SIDECOMPARATOR_JUG2.v
+set_global_assignment -name VERILOG_FILE rtl/CC_SIDECOMPARATOR_JUG1.v
+set_global_assignment -name VERILOG_FILE rtl/CC_PosCOMPARATOR_JUG2.v
+set_global_assignment -name VERILOG_FILE rtl/CC_PosCOMPARATOR_JUG1.v
 set_global_assignment -name SDC_FILE BB_SYSTEM.sdc
 set_global_assignment -name VERILOG_FILE rtl/shift_reg_start_done.v
 set_global_assignment -name VERILOG_FILE rtl/max7219_ctrl.v
 set_global_assignment -name VERILOG_FILE rtl/SC_DEBOUNCE1.v
 set_global_assignment -name VERILOG_FILE BB_SYSTEM.v
 set_global_assignment -name SOURCE_FILE db/BB_SYSTEM.cmp.rdb
+set_global_assignment -name VERILOG_FILE rtl/SC_REGJUG.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
