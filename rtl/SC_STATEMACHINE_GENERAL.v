@@ -167,30 +167,30 @@ begin
 		STATE_moverCarros_0: STATE_Signal = STATE_esperar_1;
 		STATE_sumarCarros_0: STATE_Signal = STATE_esperar_0;
 
-		STATE_esperar_0:	if (1==2 && SC_STATEMACHINE_GENERAL_posJug1_InLow == 1'b0) 
+		STATE_esperar_0:	if (SC_STATEMACHINE_GENERAL_posJug1_InLow == 1'b0) 
 									STATE_Signal = STATE_lose_jug1;
-								else if (1==2 && SC_STATEMACHINE_GENERAL_posJug2_InLow == 1'b0) 
+								else if (SC_STATEMACHINE_GENERAL_posJug2_InLow == 1'b0) 
 									STATE_Signal = STATE_lose_jug2;
-								else if (SC_STATEMACHINE_GENERAL_nivelCounter_InBUS == 2'b11 && SC_STATEMACHINE_GENERAL_pointCounter_InBUS >= 8'd68) 
+								else if (SC_STATEMACHINE_GENERAL_nivelCounter_InBUS == 2'b11 && SC_STATEMACHINE_GENERAL_pointCounter_InBUS >= 8'd57) 
 									STATE_Signal = STATE_FIN;
-								else if (SC_STATEMACHINE_GENERAL_nivelCounter_InBUS == 2'b10 && SC_STATEMACHINE_GENERAL_pointCounter_InBUS >= 8'd43) 
+								else if (SC_STATEMACHINE_GENERAL_nivelCounter_InBUS == 2'b10 && SC_STATEMACHINE_GENERAL_pointCounter_InBUS >= 8'd33) 
 									STATE_Signal = STATE_NIVEL_3;
-								else if (SC_STATEMACHINE_GENERAL_nivelCounter_InBUS == 2'b01 && SC_STATEMACHINE_GENERAL_pointCounter_InBUS >= 8'b00000100)
+								else if (SC_STATEMACHINE_GENERAL_nivelCounter_InBUS == 2'b01 && SC_STATEMACHINE_GENERAL_pointCounter_InBUS >= 8'd14)
 									STATE_Signal = STATE_NIVEL_2;
 								else if (SC_STATEMACHINE_GENERAL_speedComparator_InLow == 1'b0)
 									STATE_Signal = STATE_moverCarros_0;
 								else 
 									STATE_Signal = STATE_esperar_0;
 									
-		STATE_esperar_1:	if (1==2 && SC_STATEMACHINE_GENERAL_posJug1_InLow == 1'b0) 
+		STATE_esperar_1:	if (SC_STATEMACHINE_GENERAL_posJug1_InLow == 1'b0) 
 									STATE_Signal = STATE_lose_jug1;
-								else if (1==2 && SC_STATEMACHINE_GENERAL_posJug2_InLow == 1'b0) 
+								else if (SC_STATEMACHINE_GENERAL_posJug2_InLow == 1'b0) 
 									STATE_Signal = STATE_lose_jug2;
-								else if (SC_STATEMACHINE_GENERAL_nivelCounter_InBUS == 3 && SC_STATEMACHINE_GENERAL_pointCounter_InBUS >= 8'd68) 
+								else if (SC_STATEMACHINE_GENERAL_nivelCounter_InBUS == 3 && SC_STATEMACHINE_GENERAL_pointCounter_InBUS >= 8'd57) 
 									STATE_Signal = STATE_FIN;
-								else if (SC_STATEMACHINE_GENERAL_nivelCounter_InBUS == 2 && SC_STATEMACHINE_GENERAL_pointCounter_InBUS >= 8'd43) 
+								else if (SC_STATEMACHINE_GENERAL_nivelCounter_InBUS == 2 && SC_STATEMACHINE_GENERAL_pointCounter_InBUS >= 8'd33) 
 									STATE_Signal = STATE_NIVEL_3;
-								else if (SC_STATEMACHINE_GENERAL_nivelCounter_InBUS == 1 && SC_STATEMACHINE_GENERAL_pointCounter_InBUS >= 8'b00010000)
+								else if (SC_STATEMACHINE_GENERAL_nivelCounter_InBUS == 1 && SC_STATEMACHINE_GENERAL_pointCounter_InBUS >= 8'd14)
 									STATE_Signal = STATE_NIVEL_2;
 								else if (SC_STATEMACHINE_GENERAL_speedComparator_InLow == 1'b0)
 									STATE_Signal = STATE_sumarCarros_0;
@@ -262,8 +262,8 @@ begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow		 		= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedCounter_OutLow 		= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedReset_OutHigh 		= 1'b1;
-//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b1000111100001101000110000000;
-			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
+			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b1000111100001101000110000000;
+//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
 			SC_STATEMACHINE_GENERAL_speedCompLoad_OutLow		= 1'b0;
 			SC_STATEMACHINE_GENERAL_pointSignal_OutLow 		= 1'b1; 
 			SC_STATEMACHINE_GENERAL_mux0_OutBUS					= 4'b0001;
@@ -297,8 +297,8 @@ begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow		 		= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedCounter_OutLow 		= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedReset_OutHigh 		= 1'b1;
-//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b1000111100001101000110000000;
-			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
+			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b1000111100001101000110000000;
+//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
 			SC_STATEMACHINE_GENERAL_speedCompLoad_OutLow		= 1'b0;
 			SC_STATEMACHINE_GENERAL_pointSignal_OutLow 		= 1'b1; 
 			SC_STATEMACHINE_GENERAL_mux0_OutBUS					= 4'b0010;
@@ -332,8 +332,8 @@ begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow		 	= 1'b0;
 			SC_STATEMACHINE_GENERAL_speedCounter_OutLow 	= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedReset_OutHigh 		= 1'b1;
-//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b0010111110101111000010000000;
-			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
+			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b0010111110101111000010000000;
+//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
 			SC_STATEMACHINE_GENERAL_speedCompLoad_OutLow	= 1'b0;
 			SC_STATEMACHINE_GENERAL_pointSignal_OutLow 		= 1'b1; 
 			SC_STATEMACHINE_GENERAL_mux0_OutBUS				= 4'b0010;
@@ -350,8 +350,8 @@ begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow		 	= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedCounter_OutLow 	= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedReset_OutHigh 		= 1'b1;
-//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd150000000;
-			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
+			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd150000000;
+//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
 			SC_STATEMACHINE_GENERAL_speedCompLoad_OutLow	= 1'b0;
 			SC_STATEMACHINE_GENERAL_pointSignal_OutLow 		= 1'b1; 
 			SC_STATEMACHINE_GENERAL_mux0_OutBUS				= 4'b0011;
@@ -385,8 +385,8 @@ begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow		 	= 1'b0;
 			SC_STATEMACHINE_GENERAL_speedCounter_OutLow 	= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedReset_OutHigh 		= 1'b1;
-//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b0001011111010111100001000000;
-			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
+			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b0001011111010111100001000000;
+//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
 			SC_STATEMACHINE_GENERAL_speedCompLoad_OutLow	= 1'b0;
 			SC_STATEMACHINE_GENERAL_pointSignal_OutLow 		= 1'b1; 
 			SC_STATEMACHINE_GENERAL_mux0_OutBUS				= 4'b0011;
@@ -403,8 +403,8 @@ begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow		 	= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedCounter_OutLow 	= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedReset_OutHigh 		= 1'b1;
-//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b1000111100001101000110000000;
-			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
+			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b1000111100001101000110000000;
+//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
 			SC_STATEMACHINE_GENERAL_speedCompLoad_OutLow	= 1'b0;
 			SC_STATEMACHINE_GENERAL_pointSignal_OutLow 		= 1'b1; 
 			SC_STATEMACHINE_GENERAL_mux0_OutBUS				= 4'b0100;
@@ -438,8 +438,8 @@ begin
 			SC_STATEMACHINE_GENERAL_clear_OutLow		 	= 1'b0;
 			SC_STATEMACHINE_GENERAL_speedCounter_OutLow 	= 1'b1;
 			SC_STATEMACHINE_GENERAL_speedReset_OutHigh 		= 1'b1;
-//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b0000111001001110000111000000;
-			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
+			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'b0000111001001110000111000000;
+//			SC_STATEMACHINE_GENERAL_speedComparator_OutBUS 	= 28'd50000;
 			SC_STATEMACHINE_GENERAL_speedCompLoad_OutLow	= 1'b0;
 			SC_STATEMACHINE_GENERAL_pointSignal_OutLow 		= 1'b1; 
 			SC_STATEMACHINE_GENERAL_mux0_OutBUS				= 4'b0100;
