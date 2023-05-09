@@ -315,6 +315,7 @@ SC_REGJUG #(.DATA_INIT_POS(8'b01000000)) SC_REGJUG_u0 (
 	
 );
 SC_REGJUG #(.DATA_INIT_POS(8'b00000100)) SC_REGJUG_u1 (
+// conexiones de entrada al registro del jugador 2
 	.SC_REGJUG_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_REGJUG_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_REGJUG_clear_InLow(SC_STATEMACHINE_JUG2_clear0_cwire),
@@ -324,7 +325,7 @@ SC_REGJUG #(.DATA_INIT_POS(8'b00000100)) SC_REGJUG_u1 (
 );
 
 SC_STATEMACHINE_JUG1 SC_STATEMACHINE_JUG1_u1 (
-
+// máquina de estados jugador 1
 	.SC_STATEMACHINE_JUG1_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_STATEMACHINE_JUG1_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_STATEMACHINE_JUG1_startButton_InLow(BB_SYSTEM_startButton_InLow_cwire),
@@ -338,7 +339,7 @@ SC_STATEMACHINE_JUG1 SC_STATEMACHINE_JUG1_u1 (
 );
 
 SC_STATEMACHINE_JUG2 SC_STATEMACHINE_JUG2_u1 (
-
+// máquina de estados jugador 2
 	.SC_STATEMACHINE_JUG2_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_STATEMACHINE_JUG2_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_STATEMACHINE_JUG2_startButton_InLow(BB_SYSTEM_startButton_InLow_cwire),
@@ -423,9 +424,11 @@ CC_SPEEDCOMPARATOR CC_SPEEDCOMPARATOR_u1(
 
 );
 
-//Conexiones registro de la matriz
+//Conexiones registro de la matriz por fila
+
 
 SC_Reg_MATRIX SC_Reg_MATRIX_u7 (
+	// fila 7
 	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
@@ -436,6 +439,7 @@ SC_Reg_MATRIX SC_Reg_MATRIX_u7 (
 
 
 SC_Reg_MATRIX SC_Reg_MATRIX_u6 (
+	// fila 6
 	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
@@ -446,6 +450,7 @@ SC_Reg_MATRIX SC_Reg_MATRIX_u6 (
 );
 
 SC_Reg_MATRIX SC_Reg_MATRIX_u5 (
+	// fila 5
 	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
@@ -456,6 +461,7 @@ SC_Reg_MATRIX SC_Reg_MATRIX_u5 (
 );
 
 SC_Reg_MATRIX SC_Reg_MATRIX_u4 (
+	// fila 4
 	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
@@ -466,6 +472,7 @@ SC_Reg_MATRIX SC_Reg_MATRIX_u4 (
 );
 
 SC_Reg_MATRIX SC_Reg_MATRIX_u3 (
+	// fila 3
 	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
@@ -476,6 +483,7 @@ SC_Reg_MATRIX SC_Reg_MATRIX_u3 (
 );
 
 SC_Reg_MATRIX SC_Reg_MATRIX_u2 (
+	// fila 2
 	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
@@ -486,6 +494,7 @@ SC_Reg_MATRIX SC_Reg_MATRIX_u2 (
 );
 
 SC_Reg_MATRIX SC_Reg_MATRIX_u1 (
+	// fila 1
 	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
@@ -496,7 +505,7 @@ SC_Reg_MATRIX SC_Reg_MATRIX_u1 (
 );
 
 SC_Reg_MATRIX SC_Reg_MATRIX_u0 (
-
+	// fila 0
 	.SC_Reg_MATRIX_CLOCK_50(BB_SYSTEM_CLOCK_50),
 	.SC_Reg_MATRIX_RESET_InHigh(BB_SYSTEM_RESET_InHigh),
 	.SC_Reg_MATRIX_clear_InLow(SC_STATEMACHINE_GENERAL_clear0_cwire),
@@ -516,9 +525,10 @@ SC_RANDOM SC_RANDOM_u0 (
 
 
 
-//Multiplexor de 16 a 1
+//Multiplexor de 16 a 1 para cada registro
 
 CC_MUX16X1 CC_MUX16X1_u7 (
+	// registro 7
 	.CC_MUX16X1_select_InBUS(SC_STATEMACHINE_GENERAL_select_wire),
 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_INITReg_JUG_7),
 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_GO_Reg_JUG_7),
@@ -534,6 +544,7 @@ CC_MUX16X1 CC_MUX16X1_u7 (
 );
 
 CC_MUX16X1 CC_MUX16X1_u6 (
+	// registro 6
 	.CC_MUX16X1_select_InBUS(SC_STATEMACHINE_GENERAL_select_wire),
 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_INITReg_JUG_6),
 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_GO_Reg_JUG_6),
@@ -549,6 +560,7 @@ CC_MUX16X1 CC_MUX16X1_u6 (
 );
 
 CC_MUX16X1 CC_MUX16X1_u5 (
+	// registro 5
 	.CC_MUX16X1_select_InBUS(SC_STATEMACHINE_GENERAL_select_wire),
 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_INITReg_JUG_5),
 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_GO_Reg_JUG_5),
@@ -563,6 +575,7 @@ CC_MUX16X1 CC_MUX16X1_u5 (
 	.CC_MUX16X1_z_Out(MUX16x1__05_cwire)
 );
 CC_MUX16X1 CC_MUX16X1_u4 (
+	// registro 4
 	.CC_MUX16X1_select_InBUS(SC_STATEMACHINE_GENERAL_select_wire),
 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_INITReg_JUG_4),
 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_GO_Reg_JUG_4),
@@ -578,6 +591,7 @@ CC_MUX16X1 CC_MUX16X1_u4 (
 );
 
 CC_MUX16X1 CC_MUX16X1_u3 (
+	// registro 3
 	.CC_MUX16X1_select_InBUS(SC_STATEMACHINE_GENERAL_select_wire),
 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_INITReg_JUG_3),
 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_GO_Reg_JUG_3),
@@ -592,6 +606,7 @@ CC_MUX16X1 CC_MUX16X1_u3 (
 	.CC_MUX16X1_z_Out(MUX16x1__03_cwire)
 );
 CC_MUX16X1 CC_MUX16X1_u2 (
+	// registro 2
 	.CC_MUX16X1_select_InBUS(SC_STATEMACHINE_GENERAL_select_wire),
 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_INITReg_JUG_2),
 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_GO_Reg_JUG_2),
@@ -607,6 +622,7 @@ CC_MUX16X1 CC_MUX16X1_u2 (
 );
 
 CC_MUX16X1 CC_MUX16X1_u1 (
+	// registro 1
 	.CC_MUX16X1_select_InBUS(SC_STATEMACHINE_GENERAL_select_wire),
 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_INITReg_JUG_1),
 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_GO_Reg_JUG_1),
@@ -621,6 +637,7 @@ CC_MUX16X1 CC_MUX16X1_u1 (
 	.CC_MUX16X1_z_Out(MUX16x1__01_cwire)
 );
 CC_MUX16X1 CC_MUX16X1_u0 (
+	// registro 0
 	.CC_MUX16X1_select_InBUS(SC_STATEMACHINE_GENERAL_select_wire),
 	.CC_MUX16X1_data1_InBUS(DATA_FIXED_INITReg_JUG_0),
 	.CC_MUX16X1_data2_InBUS(DATA_FIXED_GO_Reg_JUG_0),
@@ -638,18 +655,21 @@ CC_MUX16X1 CC_MUX16X1_u0 (
 //ORs
 
 CC_OR_C CC_OR_C_u2 (
+	//comparar la posición del jugador 1 con los carros generados
 	.CC_OR_C_data0_In(REGJUG1_COMPARATOR_cwire),
 	.CC_OR_C_data1_In(Reg0_outBUS1_cwire),
 	.CC_OR_C_z_Out(CC_ORC_2_outBUS_cwire)
 );
 
 CC_OR_C CC_OR_C_u1 (
+	//juntar y visualizar la fila 0 para ambos jugadores
 	.CC_OR_C_data0_In(CC_ORC_2_outBUS_cwire),
 	.CC_OR_C_data1_In(CC_ORC_0_outBUS_cwire),
 	.CC_OR_C_z_Out(CC_ORC_C_fila0_cwire)
 );
 
 CC_OR_C CC_OR_C_u0 (
+	//comparar la posición del jugador 2 con los carros generados
 	.CC_OR_C_data0_In(REGJUG2_COMPARATOR_cwire),
 	.CC_OR_C_data1_In(Reg0_outBUS1_cwire),
 	.CC_OR_C_z_Out(CC_ORC_0_outBUS_cwire)
@@ -658,7 +678,7 @@ CC_OR_C CC_OR_C_u0 (
 //Multiplexor 2x1
 
 CC_MUX_21 CC_MUX21_u1 (
-
+	// visualizador de pantallas de fila 0 (mostrar ganador y perdedor para cada jugador, etc.)
 	.CC_MUX_21_select_InBUS(SC_STATEMACHINE_GENERAL_select0_wire),
 	.CC_MUX_21_data1_InBUS(Reg0_outBUS1_cwire),
 	.CC_MUX_21_data2_InBUS(CC_ORC_C_fila0_cwire),

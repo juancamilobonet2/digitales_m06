@@ -113,7 +113,7 @@ initial begin
 					TB_SYSTEM_rightButton_jug1_InLow <= 1'b0;
 					TB_SYSTEM_leftButton_jug2_InLow <= 1'b0; 
 					TB_SYSTEM_rightButton_jug2_InLow <= 1'b0;
-	//Deberia ir al estado start con la pantalla de start, hasta que se presione el boton start
+	//Lleva al estado start con su respectiva pantalla, hasta que se presione el boton start 
 
 	//Se presiona el boton de start. 
 	#1000 			TB_SYSTEM_RESET_InHigh <= 1'b0;
@@ -122,7 +122,7 @@ initial begin
 						TB_SYSTEM_rightButton_jug1_InLow <= 1'b0;
 						TB_SYSTEM_leftButton_jug2_InLow <= 1'b0; 
 						TB_SYSTEM_rightButton_jug2_InLow <= 1'b0;	
-	//Al presionar el boton de start, deberia ir a estado GO
+	//Al presionar el boton de start, lleva al estado GO
 	
 	//Se espera 3.01 segundos
 	//#3010000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
@@ -132,7 +132,7 @@ initial begin
 						TB_SYSTEM_rightButton_jug1_InLow <= 1'b0;
 						TB_SYSTEM_leftButton_jug2_InLow <= 1'b0; 
 						TB_SYSTEM_rightButton_jug2_InLow <= 1'b0;	
-	//Deberia pasar al estado Nivel 1
+	//Lleva al estado Nivel 1
 	
 	//Se espera 1 seg, deberiamos estar en nivel uno.
 	#1000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
@@ -174,7 +174,7 @@ initial begin
 						TB_SYSTEM_leftButton_jug2_InLow <= 1'b0; 
 						TB_SYSTEM_rightButton_jug2_InLow <= 1'b1;	
 							
-	//no se hace nada
+	//Reposo de los controles (no se hace nada)
 	#1000000 		TB_SYSTEM_RESET_InHigh <= 1'b0;
 						TB_SYSTEM_startButton_InLow <= 1'b0;
 						TB_SYSTEM_leftButton_jug1_InLow <= 1'b0; 
